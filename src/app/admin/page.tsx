@@ -1,5 +1,4 @@
 import { verifySession } from "@/lib/auth";
-import { redirect } from "next/navigation";
 import { LoginForm } from "@/components/admin/LoginForm";
 import Link from "next/link";
 import { getProducts, getPosts } from "@/lib/content";
@@ -13,7 +12,7 @@ export default async function AdminDashboard() {
   const posts = await getPosts(false);
 
   return (
-    <div className="p-8 lg:p-10">
+    <div className="p-4 sm:p-8 lg:p-10">
       <h1 className="font-display text-2xl text-brand-900">Tổng quan</h1>
       <p className="text-ink-muted mt-1">Quản lý nội dung website marketing</p>
 

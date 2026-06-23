@@ -28,7 +28,7 @@ export function ProductDocuments({ documents }: { documents: ProductDocument[] }
               href={doc.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 p-3 rounded-xl border border-brand-100 hover:border-brand-300 hover:bg-brand-50/50 transition-colors group"
+              className="flex min-h-11 items-center gap-3 p-3 rounded-xl border border-brand-100 hover:border-brand-300 hover:bg-brand-50/50 transition-colors group"
             >
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-700 group-hover:bg-brand-100">
                 <DocIcon type={doc.type} />

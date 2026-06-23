@@ -32,7 +32,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="vi" className={`${dmSerif.variable} ${sourceSans.variable} h-full`}>
-      <body className="min-h-full flex flex-col antialiased font-body">
+      <body className="min-h-full flex flex-col antialiased font-body overflow-x-clip">
         {children}
       </body>
     </html>

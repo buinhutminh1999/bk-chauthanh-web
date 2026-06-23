@@ -17,7 +17,7 @@ export default async function EditPostPage({
   if (!post) notFound();
 
   return (
-    <div className="p-8 lg:p-10">
+    <div className="p-4 sm:p-8 lg:p-10">
       <h1 className="font-display text-2xl text-brand-900">Sửa bài viết</h1>
       <div className="mt-8">
         <PostForm mode="edit" initial={post} />

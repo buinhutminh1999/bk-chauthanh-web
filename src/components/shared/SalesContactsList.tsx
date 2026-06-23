@@ -61,8 +61,8 @@ export function SalesContactsList({
             key={`${contact.name}-${contact.phone}`}
             className={cn(
               isEmbedded
-                ? "grid gap-2 sm:grid-cols-[minmax(0,7.5rem)_1fr] sm:items-center sm:gap-4"
-                : "flex flex-col gap-1.5 sm:flex-row sm:items-center sm:justify-between sm:gap-4",
+                ? "grid gap-3 sm:grid-cols-[minmax(0,7.5rem)_1fr] sm:items-center sm:gap-4"
+                : "flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4",
             )}
           >
             <span
@@ -77,17 +77,14 @@ export function SalesContactsList({
                 <span className={isDark ? "text-brand-300" : "text-ink-muted"}> :</span>
               )}
             </span>
-            <div
-              className={cn(
-                "flex flex-wrap items-center gap-x-3 gap-y-1",
-                isEmbedded ? "sm:justify-end" : "sm:justify-end",
-              )}
-            >
+            <div className="flex flex-wrap items-center gap-2 sm:justify-end">
               <a
                 href={telLink(contact.phone)}
                 className={cn(
-                  "inline-flex items-center gap-1.5 text-sm font-semibold tabular-nums",
-                  isDark ? "text-white hover:text-accent" : "text-brand-800 hover:text-brand-900",
+                  "inline-flex min-h-10 items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-semibold tabular-nums transition-colors",
+                  isDark
+                    ? "bg-brand-700/60 text-white hover:bg-brand-700"
+                    : "bg-brand-50 text-brand-800 hover:bg-brand-100",
                 )}
               >
                 <Phone className="h-3.5 w-3.5 shrink-0 opacity-70" />
@@ -98,8 +95,10 @@ export function SalesContactsList({
                 target="_blank"
                 rel="noopener noreferrer"
                 className={cn(
-                  "inline-flex items-center gap-1 text-xs font-medium",
-                  isDark ? "text-[#4FC3F7] hover:text-white" : "text-[#0068FF] hover:text-[#0058D6]",
+                  "inline-flex min-h-10 items-center gap-1 rounded-lg px-3 py-2 text-xs font-medium transition-colors",
+                  isDark
+                    ? "bg-zalo/20 text-zalo-light hover:bg-zalo/30"
+                    : "bg-zalo/10 text-zalo hover:bg-zalo/15",
                 )}
               >
                 <MessageCircle className="h-3.5 w-3.5 shrink-0" />

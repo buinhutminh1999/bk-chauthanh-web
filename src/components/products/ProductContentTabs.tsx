@@ -13,14 +13,20 @@ export function ProductContentTabs({ tabs }: { tabs: Tab[] }) {
 
   return (
     <div>
-      <div className="flex gap-2 border-b border-brand-100 pb-1 mb-8 overflow-x-auto scrollbar-thin -mx-1 px-1 sm:flex-wrap sm:overflow-visible">
+      <div
+        className="flex gap-2 border-b border-brand-100 pb-1 mb-8 overflow-x-auto scrollbar-thin -mx-1 px-1 snap-x sm:flex-wrap sm:overflow-visible sm:snap-none"
+        role="tablist"
+        aria-label="Nội dung sản phẩm"
+      >
         {tabs.map((tab) => (
           <button
             key={tab.id}
             type="button"
+            role="tab"
+            aria-selected={active === tab.id}
             onClick={() => setActive(tab.id)}
             className={cn(
-              "shrink-0 px-3 sm:px-4 py-2.5 text-sm font-medium rounded-t-lg transition-colors -mb-px border-b-2",
+              "shrink-0 snap-start min-h-11 px-3 sm:px-4 py-2.5 text-sm font-medium rounded-t-lg transition-colors -mb-px border-b-2",
               active === tab.id
                 ? "border-brand-600 text-brand-800 bg-brand-50/80"
                 : "border-transparent text-ink-muted hover:text-brand-700 hover:bg-brand-50/50",
@@ -30,7 +36,7 @@ export function ProductContentTabs({ tabs }: { tabs: Tab[] }) {
           </button>
         ))}
       </div>
-      <div className="prose-content max-w-none">
+      <div className="prose-content max-w-none" role="tabpanel">
         {current?.sections.map((section) => (
           <div key={section.title} className="mb-8 last:mb-0">
             {section.title &&

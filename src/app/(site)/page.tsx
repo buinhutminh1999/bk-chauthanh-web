@@ -49,8 +49,8 @@ export default async function HomePage() {
               Sản xuất cống bê tông ly tâm, cọc bê tông dự ứng lực, gạch bê tông, gạch vỉa hè và
               bê tông siêu tính năng UHPC tại Châu Thành, An Giang.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button href="/san-pham" size="lg" className="bg-accent text-brand-900 hover:bg-accent-light border-0">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Button href="/san-pham" size="lg" variant="accent">
                 Khám phá sản phẩm
                 <ArrowRight className="h-4 w-4" />
               </Button>
@@ -63,24 +63,24 @@ export default async function HomePage() {
                 Yêu cầu báo giá
               </Button>
               {site.phone && (
-                <>
+                <div className="flex flex-wrap gap-2 sm:gap-3 w-full sm:w-auto pt-1 sm:pt-0">
                   <a
                     href={telLink(site.phone)}
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium bg-brand-700 text-white hover:bg-brand-600 transition-colors"
+                    className="inline-flex min-h-11 flex-1 sm:flex-initial items-center justify-center gap-2 px-5 py-3 rounded-lg font-medium bg-brand-700 text-white hover:bg-brand-600 transition-colors sm:px-6"
                   >
                     <Phone className="h-4 w-4" />
-                    {site.phone}
+                    <span className="truncate">{site.phone}</span>
                   </a>
                   <a
                     href={zaloLink(site.phone)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium bg-[#0068FF] text-white hover:bg-[#0058D6] transition-colors"
+                    className="inline-flex min-h-11 flex-1 sm:flex-initial items-center justify-center gap-2 px-5 py-3 rounded-lg font-medium bg-zalo text-white hover:bg-zalo-hover transition-colors sm:px-6"
                   >
                     <MessageCircle className="h-4 w-4" />
                     Zalo
                   </a>
-                </>
+                </div>
               )}
             </div>
           </div>
@@ -91,10 +91,10 @@ export default async function HomePage() {
 
       <section className="py-12 bg-white border-b border-brand-100">
         <Container>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {site.stats.map((stat) => (
               <div key={stat.label} className="text-center">
-                <p className="font-display text-3xl lg:text-4xl text-brand-800">{stat.value}</p>
+                <p className="font-display text-2xl sm:text-3xl lg:text-4xl text-brand-800">{stat.value}</p>
                 <p className="mt-1 text-sm text-ink-muted">{stat.label}</p>
               </div>
             ))}
@@ -121,7 +121,7 @@ export default async function HomePage() {
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 min-[414px]:grid-cols-2 lg:grid-cols-3 gap-6">
             {featured.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
@@ -145,7 +145,7 @@ export default async function HomePage() {
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 min-[414px]:grid-cols-2 lg:grid-cols-3 gap-6">
               {latestPosts.map((post) => (
                 <PostCard key={post.id} post={post} />
               ))}

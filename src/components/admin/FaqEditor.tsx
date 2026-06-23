@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import type { FaqItem } from "@/types/content";
+import { AdminFormActions } from "@/components/admin/AdminFormActions";
 
 export function FaqEditor({ initial }: { initial: FaqItem[] }) {
   const router = useRouter();
@@ -58,19 +59,16 @@ export function FaqEditor({ initial }: { initial: FaqItem[] }) {
     setLoading(false);
   }
 
-  const inputClass =
-    "mt-1.5 w-full px-4 py-2.5 rounded-lg border border-brand-200 focus:outline-none focus:ring-2 focus:ring-brand-500/30 text-sm";
-
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 max-w-3xl">
+    <form onSubmit={handleSubmit} className="space-y-6 max-w-3xl pb-4">
       {items.map((item, index) => (
         <div key={item.id} className="p-5 rounded-xl border border-brand-100 bg-white space-y-3">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between gap-3">
             <span className="text-sm font-medium text-brand-700">Câu {index + 1}</span>
             <button
               type="button"
               onClick={() => removeItem(item.id)}
-              className="text-xs text-red-600 hover:text-red-800"
+              className="min-h-10 px-3 text-xs font-medium text-danger hover:bg-danger-muted rounded-lg transition-colors"
             >
               Xóa
             </button>
@@ -81,7 +79,7 @@ export function FaqEditor({ initial }: { initial: FaqItem[] }) {
               required
               value={item.question}
               onChange={(e) => updateItem(item.id, "question", e.target.value)}
-              className={inputClass}
+              className="form-input text-sm"
             />
           </label>
           <label className="block">
@@ -91,7 +89,7 @@ export function FaqEditor({ initial }: { initial: FaqItem[] }) {
               value={item.answer}
               onChange={(e) => updateItem(item.id, "answer", e.target.value)}
               rows={3}
-              className={inputClass}
+              className="form-input text-sm"
             />
           </label>
         </div>
@@ -100,21 +98,15 @@ export function FaqEditor({ initial }: { initial: FaqItem[] }) {
       <button
         type="button"
         onClick={addItem}
-        className="text-sm font-medium text-brand-700 hover:text-brand-900"
+        className="min-h-11 text-sm font-medium text-brand-700 hover:text-brand-900"
       >
         + Thêm câu hỏi
       </button>
 
-      {error && <p className="text-sm text-red-600">{error}</p>}
-      {saved && <p className="text-sm text-green-700">Đã lưu FAQ.</p>}
+      {error && <p className="form-error">{error}</p>}
+      {saved && <p className="text-sm text-success">Đã lưu FAQ.</p>}
 
-      <button
-        type="submit"
-        disabled={loading}
-        className="px-5 py-2.5 rounded-lg bg-brand-700 text-white text-sm font-medium hover:bg-brand-800 disabled:opacity-50"
-      >
-        {loading ? "Đang lưu..." : "Lưu FAQ"}
-      </button>
+      <AdminFormActions loading={loading} submitLabel="Lưu FAQ" />
     </form>
   );
 }

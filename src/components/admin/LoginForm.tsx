@@ -55,14 +55,14 @@ export function LoginForm() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="mt-1.5 w-full px-4 py-2.5 rounded-lg border border-brand-200 focus:outline-none focus:ring-2 focus:ring-brand-500/30"
+              className="form-input"
             />
           </label>
-          {error && <p className="text-sm text-red-600">{error}</p>}
+          {error && <p className="form-error">{error}</p>}
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2.5 rounded-lg bg-brand-700 text-white font-medium hover:bg-brand-800 disabled:opacity-50"
+            className="w-full min-h-11 py-2.5 rounded-lg bg-brand-700 text-white font-medium hover:bg-brand-800 disabled:opacity-50"
           >
             {loading ? "Đang đăng nhập..." : "Đăng nhập"}
           </button>

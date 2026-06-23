@@ -1,6 +1,7 @@
 import { PageHeader } from "@/components/shared/PageHeader";
 import { Container } from "@/components/ui/Container";
 import { PostCard } from "@/components/blog/PostCard";
+import { EmptyState } from "@/components/shared/EmptyState";
 import { getSiteConfig, getPosts } from "@/lib/content";
 import { buildMetadata } from "@/lib/seo";
 
@@ -25,13 +26,17 @@ export default async function NewsPage() {
       />
       <section className="py-16 lg:py-20">
         <Container>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {posts.map((post) => (
-              <PostCard key={post.id} post={post} />
-            ))}
-          </div>
-          {posts.length === 0 && (
-            <p className="text-center text-ink-muted py-12">Chưa có bài viết.</p>
+          {posts.length > 0 ? (
+            <div className="grid grid-cols-1 min-[414px]:grid-cols-2 lg:grid-cols-3 gap-6">
+              {posts.map((post) => (
+                <PostCard key={post.id} post={post} />
+              ))}
+            </div>
+          ) : (
+            <EmptyState
+              title="Chưa có bài viết"
+              description="Tin tức công ty sẽ được cập nhật tại đây."
+            />
           )}
         </Container>
       </section>

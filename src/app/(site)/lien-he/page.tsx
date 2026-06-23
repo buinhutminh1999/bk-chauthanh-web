@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { getSiteConfig } from "@/lib/content";
 import { buildMetadata } from "@/lib/seo";
 import { ContactPageClient } from "./ContactPageClient";
@@ -14,15 +15,17 @@ export async function generateMetadata() {
 export default async function ContactPage() {
   const site = await getSiteConfig();
   return (
-    <ContactPageClient
-      site={{
-        companyName: site.companyName,
-        phone: site.phone,
-        email: site.email,
-        address: site.address,
-        facebook: site.social.facebook,
-        salesContacts: site.salesContacts,
-      }}
-    />
+    <Suspense>
+      <ContactPageClient
+        site={{
+          companyName: site.companyName,
+          phone: site.phone,
+          email: site.email,
+          address: site.address,
+          facebook: site.social.facebook,
+          salesContacts: site.salesContacts,
+        }}
+      />
+    </Suspense>
   );
 }

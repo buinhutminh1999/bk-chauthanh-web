@@ -2,6 +2,7 @@ import { PageHeader } from "@/components/shared/PageHeader";
 import { Container } from "@/components/ui/Container";
 import { ProductCatalog } from "@/components/products/ProductCatalog";
 import { CTABanner } from "@/components/shared/CTABanner";
+import { EmptyState } from "@/components/shared/EmptyState";
 import { getSiteConfig, getProducts } from "@/lib/content";
 import { buildMetadata } from "@/lib/seo";
 
@@ -30,9 +31,10 @@ export default async function ProductsPage() {
           {products.length > 0 ? (
             <ProductCatalog products={products} />
           ) : (
-            <p className="text-center text-ink-muted py-12">
-              Chưa có sản phẩm. Quản trị viên có thể thêm tại trang Admin.
-            </p>
+            <EmptyState
+              title="Chưa có sản phẩm"
+              description="Quản trị viên có thể thêm sản phẩm tại trang Admin."
+            />
           )}
         </Container>
       </section>

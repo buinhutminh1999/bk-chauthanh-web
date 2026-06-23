@@ -21,7 +21,7 @@ export function FacebookSection({ facebookUrl }: { facebookUrl: string }) {
               href={facebookUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#1877F2] text-white font-medium hover:bg-[#166FE5] transition-colors"
+              className="mt-6 inline-flex min-h-11 items-center gap-2 px-5 py-2.5 rounded-xl bg-facebook text-white font-medium hover:bg-facebook-hover transition-colors"
             >
               Theo dõi Fanpage
               <ExternalLink className="h-4 w-4" />

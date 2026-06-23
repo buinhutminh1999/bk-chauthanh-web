@@ -13,7 +13,7 @@ export function ProductQuoteBox({ phone, productName }: Props) {
     : "/lien-he";
 
   return (
-    <div className="rounded-2xl border border-brand-100 bg-white p-6 shadow-sm lg:sticky lg:top-24">
+    <div className="rounded-2xl border-2 border-brand-200 bg-gradient-to-b from-brand-50/80 to-white p-6 shadow-md lg:sticky lg:top-24 lg:border lg:border-brand-100 lg:shadow-sm lg:bg-white lg:from-white lg:to-white">
       <p className="text-sm font-semibold uppercase tracking-wider text-brand-600">
         Tư vấn & báo giá
       </p>
@@ -27,7 +27,7 @@ export function ProductQuoteBox({ phone, productName }: Props) {
         </Button>
         <a
           href={telLink(phone)}
-          className="inline-flex items-center justify-center gap-2 w-full px-6 py-3 rounded-lg font-medium border border-brand-200 text-brand-800 hover:bg-brand-50 transition-colors"
+          className="inline-flex min-h-11 items-center justify-center gap-2 w-full px-6 py-3 rounded-lg font-medium border border-brand-200 text-brand-800 hover:bg-brand-50 transition-colors"
         >
           <Phone className="h-4 w-4" />
           {phone}
@@ -36,7 +36,7 @@ export function ProductQuoteBox({ phone, productName }: Props) {
           href={zaloLink(phone)}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-2 w-full px-6 py-3 rounded-lg font-medium bg-[#0068FF] text-white hover:bg-[#0058D6] transition-colors"
+          className="inline-flex min-h-12 items-center justify-center gap-2 w-full px-6 py-3 rounded-lg font-medium bg-zalo text-white hover:bg-zalo-hover active:scale-[0.98] transition-all"
         >
           <MessageCircle className="h-4 w-4" />
           Chat Zalo

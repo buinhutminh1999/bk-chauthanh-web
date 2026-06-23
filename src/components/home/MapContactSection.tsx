@@ -85,7 +85,7 @@ export function ContactMap({
   return (
     <div
       className={cn(
-        "h-full min-h-[320px] overflow-hidden rounded-2xl shadow-lg ring-1 ring-brand-100 lg:min-h-0",
+        "h-full min-h-[280px] overflow-hidden rounded-2xl shadow-lg ring-1 ring-brand-100 aspect-video sm:aspect-auto sm:min-h-[320px] lg:min-h-0",
         className,
       )}
     >

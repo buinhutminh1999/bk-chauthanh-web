@@ -37,7 +37,7 @@ export function CategoryShowcase({ products }: { products: Product[] }) {
           </p>
         </div>
 
-        <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="mt-10 grid grid-cols-1 min-[414px]:grid-cols-2 lg:grid-cols-3 gap-5">
           {items.map((product) => {
             const image = product.images[0];
             const line = PRODUCT_LINE_FILTERS.find((item) => item.slug === product.slug);

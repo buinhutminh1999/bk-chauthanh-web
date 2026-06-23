@@ -63,43 +63,25 @@ export function QuoteFormCompact({
       )}
     >
       <h3 className="font-display text-lg text-brand-900">Yêu cầu báo giá nhanh</h3>
-      {error && (
-        <p className="text-sm text-red-600 bg-red-50 border border-red-100 rounded-lg px-3 py-2">
-          {error}
-        </p>
-      )}
+      {error && <p className="form-error">{error}</p>}
       <label className="block">
         <span className="text-sm font-medium text-ink">Họ tên *</span>
-        <input
-          required
-          name="name"
-          type="text"
-          className="mt-1.5 w-full px-4 py-2.5 rounded-lg border border-brand-200 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500"
-        />
+        <input required name="name" type="text" className="form-input" />
       </label>
       <label className="block">
         <span className="text-sm font-medium text-ink">Điện thoại *</span>
-        <input
-          required
-          name="phone"
-          type="tel"
-          className="mt-1.5 w-full px-4 py-2.5 rounded-lg border border-brand-200 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500"
-        />
+        <input required name="phone" type="tel" className="form-input" />
       </label>
       <label className="block">
         <span className="text-sm font-medium text-ink">Email</span>
-        <input
-          name="email"
-          type="email"
-          className="mt-1.5 w-full px-4 py-2.5 rounded-lg border border-brand-200 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500"
-        />
+        <input name="email" type="email" className="form-input" />
       </label>
       <label className="block">
         <span className="text-sm font-medium text-ink">Sản phẩm quan tâm</span>
         <select
           name="product"
           defaultValue={defaultProduct ?? PRODUCT_OPTIONS[0]}
-          className="mt-1.5 w-full px-4 py-2.5 rounded-lg border border-brand-200 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500 bg-white"
+          className="form-input"
         >
           {PRODUCT_OPTIONS.map((opt) => (
             <option key={opt} value={opt}>{opt}</option>
@@ -112,7 +94,7 @@ export function QuoteFormCompact({
           name="message"
           rows={3}
           placeholder="Quy cách, số lượng, dự án..."
-          className="mt-1.5 w-full px-4 py-2.5 rounded-lg border border-brand-200 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500 resize-y"
+          className="form-input"
         />
       </label>
       <Button type="submit" className="mt-auto w-full" disabled={loading}>

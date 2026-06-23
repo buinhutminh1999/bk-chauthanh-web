@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { MapPin, Mail, Phone, Send, MessageCircle } from "lucide-react";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { Container } from "@/components/ui/Container";
@@ -30,13 +31,11 @@ const PRODUCT_OPTIONS = [
 
 export function ContactPageClient({ site }: { site: SiteInfo }) {
   const { loading, sent, error, submit } = useContactForm();
-  const [productPreset, setProductPreset] = useState(PRODUCT_OPTIONS[0]);
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const fromQuery = params.get("product");
-    if (fromQuery) setProductPreset(fromQuery);
-  }, []);
+  const searchParams = useSearchParams();
+  const queryProduct = searchParams.get("product");
+  const [productPreset, setProductPreset] = useState(
+    queryProduct && queryProduct.length > 0 ? queryProduct : PRODUCT_OPTIONS[0],
+  );
 
   const mapQuery = encodeURIComponent(site.address);
   const embedSrc = `https://maps.google.com/maps?q=${mapQuery}&t=&z=14&ie=UTF8&iwloc=&output=embed`;
@@ -61,7 +60,7 @@ export function ContactPageClient({ site }: { site: SiteInfo }) {
         title="Liên hệ với chúng tôi"
         subtitle="Tư vấn sản phẩm, báo giá và hỗ trợ kỹ thuật cho dự án của bạn"
       />
-      <section className="py-16 lg:py-20">
+      <section className="py-16 lg:py-20 pb-8">
         <Container>
           <div className="grid lg:grid-cols-5 gap-12">
             <div className="lg:col-span-2 space-y-6">
@@ -91,7 +90,7 @@ export function ContactPageClient({ site }: { site: SiteInfo }) {
 
               {site.phone && (
                 <div className="flex gap-4">
-                  <MessageCircle className="h-5 w-5 text-[#0068FF] shrink-0" />
+                  <MessageCircle className="h-5 w-5 text-zalo shrink-0" />
                   <a
                     href={zaloLink(site.phone)}
                     target="_blank"
@@ -131,7 +130,7 @@ export function ContactPageClient({ site }: { site: SiteInfo }) {
                   <>
                     <a
                       href={telLink(site.phone)}
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-brand-700 text-white text-sm font-medium hover:bg-brand-800"
+                      className="inline-flex min-h-11 items-center gap-2 px-4 py-2 rounded-lg bg-brand-700 text-white text-sm font-medium hover:bg-brand-800"
                     >
                       <Phone className="h-4 w-4" />
                       Gọi ngay
@@ -140,7 +139,7 @@ export function ContactPageClient({ site }: { site: SiteInfo }) {
                       href={zaloLink(site.phone)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#0068FF] text-white text-sm font-medium hover:bg-[#0058D6]"
+                      className="inline-flex min-h-11 items-center gap-2 px-4 py-2 rounded-lg bg-zalo text-white text-sm font-medium hover:bg-zalo-hover"
                     >
                       <MessageCircle className="h-4 w-4" />
                       Zalo
@@ -175,11 +174,7 @@ export function ContactPageClient({ site }: { site: SiteInfo }) {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-5">
-                    {error && (
-                      <p className="text-sm text-red-600 bg-red-50 border border-red-100 rounded-lg px-3 py-2">
-                        {error}
-                      </p>
-                    )}
+                    {error && <p className="form-error">{error}</p>}
                     <div className="grid sm:grid-cols-2 gap-5">
                       <label className="block">
                         <span className="text-sm font-medium text-ink">Họ và tên *</span>
@@ -187,7 +182,7 @@ export function ContactPageClient({ site }: { site: SiteInfo }) {
                           required
                           name="name"
                           type="text"
-                          className="mt-1.5 w-full px-4 py-2.5 rounded-lg border border-brand-200 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500"
+                          className="form-input"
                         />
                       </label>
                       <label className="block">
@@ -196,7 +191,7 @@ export function ContactPageClient({ site }: { site: SiteInfo }) {
                           required
                           name="phone"
                           type="tel"
-                          className="mt-1.5 w-full px-4 py-2.5 rounded-lg border border-brand-200 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500"
+                          className="form-input"
                         />
                       </label>
                     </div>
@@ -214,7 +209,7 @@ export function ContactPageClient({ site }: { site: SiteInfo }) {
                         name="product"
                         value={productPreset}
                         onChange={(e) => setProductPreset(e.target.value)}
-                        className="mt-1.5 w-full px-4 py-2.5 rounded-lg border border-brand-200 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500 bg-white"
+                        className="form-input bg-white"
                       >
                         {PRODUCT_OPTIONS.map((opt) => (
                           <option key={opt} value={opt}>{opt}</option>
@@ -230,7 +225,7 @@ export function ContactPageClient({ site }: { site: SiteInfo }) {
                         required
                         name="message"
                         rows={4}
-                        className="mt-1.5 w-full px-4 py-2.5 rounded-lg border border-brand-200 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500 resize-y"
+                        className="form-input resize-y"
                         placeholder="Mô tả dự án, quy cách cần tư vấn..."
                       />
                     </label>

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import type { Product, ProductDocumentType } from "@/types/content";
 import { slugify } from "@/lib/utils";
+import { AdminFormActions, AdminFormSection } from "@/components/admin/AdminFormActions";
 
 type ProductFormProps = {
   initial?: Product;
@@ -97,69 +98,76 @@ export function ProductForm({ initial, mode }: ProductFormProps) {
     setLoading(false);
   }
 
-  const inputClass =
-    "mt-1.5 w-full px-4 py-2.5 rounded-lg border border-brand-200 focus:outline-none focus:ring-2 focus:ring-brand-500/30 text-sm";
-
   return (
-    <form onSubmit={handleSubmit} className="space-y-5 max-w-2xl">
-      <label className="block">
-        <span className="text-sm font-medium">Tên sản phẩm *</span>
-        <input required value={name} onChange={(e) => handleNameChange(e.target.value)} className={inputClass} />
-      </label>
-      <label className="block">
-        <span className="text-sm font-medium">Slug (URL) *</span>
-        <input required value={slug} onChange={(e) => setSlug(e.target.value)} className={inputClass} />
-      </label>
-      <label className="block">
-        <span className="text-sm font-medium">Mô tả ngắn *</span>
-        <textarea required value={shortDescription} onChange={(e) => setShortDescription(e.target.value)} rows={2} className={inputClass} />
-      </label>
-      <label className="block">
-        <span className="text-sm font-medium">Nội dung (Markdown)</span>
-        <textarea value={description} onChange={(e) => setDescription(e.target.value)} rows={8} className={inputClass} />
-      </label>
-      <label className="block">
-        <span className="text-sm font-medium">Danh mục</span>
-        <input value={category} onChange={(e) => setCategory(e.target.value)} className={inputClass} />
-      </label>
-      <label className="block">
-        <span className="text-sm font-medium">URL ảnh (mỗi dòng một ảnh)</span>
-        <textarea value={imagesText} onChange={(e) => setImagesText(e.target.value)} rows={3} className={inputClass} placeholder="/images/..." />
-      </label>
-      <label className="block">
-        <span className="text-sm font-medium">Tài liệu (mỗi dòng: Tiêu đề|URL|loại)</span>
-        <textarea
-          value={documentsText}
-          onChange={(e) => setDocumentsText(e.target.value)}
-          rows={4}
-          className={inputClass}
-          placeholder="Bản vẽ điển hình|/files/ban-ve.pdf|drawing"
-        />
-        <span className="text-xs text-ink-muted mt-1 block">Loại: pdf, drawing, catalog</span>
-      </label>
-      <label className="block">
-        <span className="text-sm font-medium">Thông số (mỗi dòng: Tên: Giá trị)</span>
-        <textarea value={specsText} onChange={(e) => setSpecsText(e.target.value)} rows={4} className={inputClass} />
-      </label>
-      <div className="flex gap-6">
-        <label className="flex items-center gap-2 text-sm">
-          <input type="checkbox" checked={featured} onChange={(e) => setFeatured(e.target.checked)} />
-          Sản phẩm nổi bật
+    <form onSubmit={handleSubmit} className="space-y-6 max-w-2xl pb-4">
+      <AdminFormSection title="Thông tin cơ bản">
+        <label className="block">
+          <span className="text-sm font-medium">Tên sản phẩm *</span>
+          <input required value={name} onChange={(e) => handleNameChange(e.target.value)} className="form-input" />
         </label>
-        <label className="flex items-center gap-2 text-sm">
-          <input type="checkbox" checked={published} onChange={(e) => setPublished(e.target.checked)} />
-          Hiển thị công khai
+        <label className="block">
+          <span className="text-sm font-medium">Slug (URL) *</span>
+          <input required value={slug} onChange={(e) => setSlug(e.target.value)} className="form-input" />
         </label>
-      </div>
-      {error && <p className="text-sm text-red-600">{error}</p>}
-      <div className="flex gap-3">
-        <button type="submit" disabled={loading} className="px-5 py-2.5 rounded-lg bg-brand-700 text-white text-sm font-medium hover:bg-brand-800 disabled:opacity-50">
-          {loading ? "Đang lưu..." : "Lưu sản phẩm"}
-        </button>
-        <button type="button" onClick={() => router.back()} className="px-5 py-2.5 rounded-lg border border-brand-200 text-sm">
-          Hủy
-        </button>
-      </div>
+        <label className="block">
+          <span className="text-sm font-medium">Mô tả ngắn *</span>
+          <textarea required value={shortDescription} onChange={(e) => setShortDescription(e.target.value)} rows={2} className="form-input" />
+        </label>
+        <label className="block">
+          <span className="text-sm font-medium">Danh mục</span>
+          <input value={category} onChange={(e) => setCategory(e.target.value)} className="form-input" />
+        </label>
+      </AdminFormSection>
+
+      <AdminFormSection title="Nội dung & thông số" description="Nội dung hỗ trợ Markdown.">
+        <label className="block">
+          <span className="text-sm font-medium">Nội dung (Markdown)</span>
+          <textarea value={description} onChange={(e) => setDescription(e.target.value)} rows={8} className="form-input" />
+        </label>
+        <label className="block">
+          <span className="text-sm font-medium">Thông số (mỗi dòng: Tên: Giá trị)</span>
+          <textarea value={specsText} onChange={(e) => setSpecsText(e.target.value)} rows={4} className="form-input" />
+        </label>
+      </AdminFormSection>
+
+      <AdminFormSection title="Ảnh & tài liệu">
+        <label className="block">
+          <span className="text-sm font-medium">URL ảnh (mỗi dòng một ảnh)</span>
+          <textarea value={imagesText} onChange={(e) => setImagesText(e.target.value)} rows={3} className="form-input" placeholder="/images/..." />
+        </label>
+        <label className="block">
+          <span className="text-sm font-medium">Tài liệu (mỗi dòng: Tiêu đề|URL|loại)</span>
+          <textarea
+            value={documentsText}
+            onChange={(e) => setDocumentsText(e.target.value)}
+            rows={4}
+            className="form-input"
+            placeholder="Bản vẽ điển hình|/files/ban-ve.pdf|drawing"
+          />
+          <span className="text-xs text-ink-muted mt-1 block">Loại: pdf, drawing, catalog</span>
+        </label>
+      </AdminFormSection>
+
+      <AdminFormSection title="Hiển thị">
+        <div className="flex flex-wrap gap-6">
+          <label className="flex min-h-11 items-center gap-2 text-sm">
+            <input type="checkbox" checked={featured} onChange={(e) => setFeatured(e.target.checked)} />
+            Sản phẩm nổi bật
+          </label>
+          <label className="flex min-h-11 items-center gap-2 text-sm">
+            <input type="checkbox" checked={published} onChange={(e) => setPublished(e.target.checked)} />
+            Hiển thị công khai
+          </label>
+        </div>
+      </AdminFormSection>
+
+      {error && <p className="form-error">{error}</p>}
+      <AdminFormActions
+        loading={loading}
+        submitLabel="Lưu sản phẩm"
+        loadingLabel="Đang lưu..."
+        onCancel={() => router.back()}
+      />
     </form>
   );
 }

@@ -25,7 +25,7 @@ export function RelatedProducts({
   return (
     <section className="mt-16 pt-16 border-t border-brand-100">
       <h2 className="font-display text-2xl text-brand-900">Sản phẩm liên quan</h2>
-      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="mt-6 grid grid-cols-1 min-[414px]:grid-cols-2 lg:grid-cols-3 gap-5">
         {related.map((p) => (
           <Link
             key={p.id}

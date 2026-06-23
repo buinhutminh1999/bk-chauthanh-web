@@ -156,7 +156,7 @@ export function Footer({ site }: { site: SiteConfig }) {
                   <Mail className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
                   <a
                     href={`mailto:${site.email}`}
-                    className="break-all hover:text-white transition-colors"
+                    className="break-words hover:text-white transition-colors"
                   >
                     {site.email}
                   </a>
@@ -179,7 +179,7 @@ export function Footer({ site }: { site: SiteConfig }) {
           </FooterColumn>
 
           {site.salesContacts && site.salesContacts.length > 0 && (
-            <FooterColumn heading="Mọi chi tiết xin liên hệ" className="sm:col-span-2 lg:col-span-2">
+            <FooterColumn heading="Mọi chi tiết xin liên hệ" className="sm:col-span-2 lg:col-span-2 xl:col-span-2">
               <SalesContactsList
                 contacts={site.salesContacts}
                 variant="dark"

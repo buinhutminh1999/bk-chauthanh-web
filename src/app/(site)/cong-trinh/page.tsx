@@ -2,6 +2,7 @@ import { PageHeader } from "@/components/shared/PageHeader";
 import { Container } from "@/components/ui/Container";
 import { ProjectCard } from "@/components/projects/ProjectCard";
 import { CTABanner } from "@/components/shared/CTABanner";
+import { EmptyState } from "@/components/shared/EmptyState";
 import { getSiteConfig, getProjects } from "@/lib/content";
 import { buildMetadata } from "@/lib/seo";
 
@@ -30,15 +31,16 @@ export default async function ProjectsPage() {
       <section className="py-16 lg:py-20">
         <Container>
           {projects.length === 0 ? (
-            <p className="text-center text-ink-muted py-12">
-              Chưa có công trình. Quản trị viên có thể thêm tại Admin.
-            </p>
+            <EmptyState
+              title="Chưa có công trình"
+              description="Quản trị viên có thể thêm công trình tiêu biểu tại Admin."
+            />
           ) : (
             <>
               {featured.length > 0 && (
                 <div className="mb-12">
                   <h2 className="font-display text-2xl text-brand-900 mb-6">Nổi bật</h2>
-                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 min-[414px]:grid-cols-2 lg:grid-cols-3 gap-6">
                     {featured.map((p) => (
                       <ProjectCard key={p.id} project={p} />
                     ))}
@@ -50,7 +52,7 @@ export default async function ProjectsPage() {
                   {featured.length > 0 && (
                     <h2 className="font-display text-2xl text-brand-900 mb-6">Khác</h2>
                   )}
-                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 min-[414px]:grid-cols-2 lg:grid-cols-3 gap-6">
                     {others.map((p) => (
                       <ProjectCard key={p.id} project={p} />
                     ))}
