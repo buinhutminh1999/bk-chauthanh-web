@@ -7,6 +7,7 @@ type Props = {
   contacts: SalesContact[];
   title?: string;
   variant?: "light" | "dark";
+  layout?: "buttons" | "footer";
   compact?: boolean;
   embedded?: boolean;
   hideTitle?: boolean;
@@ -21,6 +22,7 @@ export function SalesContactsList({
   contacts,
   title = "Mọi chi tiết xin liên hệ",
   variant = "light",
+  layout = "buttons",
   compact = false,
   embedded = false,
   hideTitle = false,
@@ -29,6 +31,44 @@ export function SalesContactsList({
   if (!contacts.length) return null;
 
   const isDark = variant === "dark";
+
+  if (layout === "footer") {
+    return (
+      <div className={cn("min-w-0", className)}>
+        <p className="text-xs font-semibold uppercase tracking-widest text-accent">
+          {title}
+        </p>
+        <ul className="mt-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {contacts.map((contact) => (
+            <li key={`${contact.name}-${contact.phone}`}>
+              <p className="text-xs text-brand-300">
+                {contact.role} · {contact.name}
+              </p>
+              <div className="mt-1 flex flex-wrap items-center gap-x-4 gap-y-1">
+                <a
+                  href={telLink(contact.phone)}
+                  className="inline-flex items-center gap-1.5 text-sm text-brand-200 transition-colors hover:text-white"
+                >
+                  <Phone className="h-3.5 w-3.5 shrink-0 text-accent" />
+                  <span className="tabular-nums">{contact.phone}</span>
+                </a>
+                <a
+                  href={zaloLink(contact.phone)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-xs text-brand-300 transition-colors hover:text-white"
+                >
+                  <MessageCircle className="h-3 w-3 shrink-0" />
+                  Zalo
+                </a>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
+
   const isEmbedded = embedded || compact;
 
   return (

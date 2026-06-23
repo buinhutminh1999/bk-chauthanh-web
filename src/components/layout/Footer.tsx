@@ -119,76 +119,78 @@ export function Footer({ site }: { site: SiteConfig }) {
             </ul>
           </FooterColumn>
 
-          <FooterColumn heading="Liên hệ" className="lg:col-span-2">
-            <ul className="space-y-3 text-sm text-brand-200">
-              {site.address && (
-                <li className="flex gap-2.5">
-                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                  <span className="leading-relaxed">{site.address}</span>
-                </li>
-              )}
-              {site.phone && (
-                <li className="flex gap-2.5 items-center">
-                  <Phone className="h-4 w-4 shrink-0 text-accent" />
-                  <a
-                    href={telLink(site.phone)}
-                    className="hover:text-white transition-colors"
-                  >
-                    {site.phone}
-                  </a>
-                </li>
-              )}
-              {site.phone && (
-                <li className="flex gap-2.5 items-center">
-                  <MessageCircle className="h-4 w-4 shrink-0 text-accent" />
-                  <a
-                    href={zaloLink(site.phone)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-white transition-colors"
-                  >
-                    Chat Zalo
-                  </a>
-                </li>
-              )}
-              {site.email && (
-                <li className="flex gap-2.5 items-start min-w-0">
-                  <Mail className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                  <a
-                    href={`mailto:${site.email}`}
-                    className="break-words hover:text-white transition-colors"
-                  >
-                    {site.email}
-                  </a>
-                </li>
-              )}
-              {site.social?.facebook && (
-                <li className="flex gap-2.5 items-center">
+          <div className="min-w-0 sm:col-span-2 lg:col-span-4">
+            <FooterHeading>Liên hệ</FooterHeading>
+            <div className="mt-4 space-y-8">
+              <ul className="space-y-3 text-sm text-brand-200">
+                {site.address && (
+                  <li className="flex gap-2.5">
+                    <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                    <span className="min-w-0 leading-relaxed">{site.address}</span>
+                  </li>
+                )}
+                {site.phone && (
+                  <li className="flex gap-2.5 items-center">
+                    <Phone className="h-4 w-4 shrink-0 text-accent" />
+                    <a
+                      href={telLink(site.phone)}
+                      className="hover:text-white transition-colors"
+                    >
+                      {site.phone}
+                    </a>
+                  </li>
+                )}
+                {site.phone && (
+                  <li className="flex gap-2.5 items-center">
+                    <MessageCircle className="h-4 w-4 shrink-0 text-accent" />
+                    <a
+                      href={zaloLink(site.phone)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-white transition-colors"
+                    >
+                      Chat Zalo
+                    </a>
+                  </li>
+                )}
+                {site.email && (
+                  <li className="flex gap-2.5 items-center">
+                    <Mail className="h-4 w-4 shrink-0 text-accent" />
+                    <a
+                      href={`mailto:${site.email}`}
+                      className="hover:text-white transition-colors"
+                    >
+                      {site.email}
+                    </a>
+                  </li>
+                )}
+                {site.social?.facebook && (
+                  <li className="flex gap-2.5 items-center">
                     <Share2 className="h-4 w-4 shrink-0 text-accent" />
-                  <a
-                    href={site.social.facebook}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-white transition-colors"
-                  >
-                    Fanpage Facebook
-                  </a>
-                </li>
-              )}
-            </ul>
-          </FooterColumn>
+                    <a
+                      href={site.social.facebook}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-white transition-colors"
+                    >
+                      Fanpage Facebook
+                    </a>
+                  </li>
+                )}
+              </ul>
 
-          {site.salesContacts && site.salesContacts.length > 0 && (
-            <FooterColumn heading="Mọi chi tiết xin liên hệ" className="sm:col-span-2 lg:col-span-2 xl:col-span-2">
-              <SalesContactsList
-                contacts={site.salesContacts}
-                variant="dark"
-                embedded
-                hideTitle
-                title="Mọi chi tiết xin liên hệ"
-              />
-            </FooterColumn>
-          )}
+              {site.salesContacts && site.salesContacts.length > 0 && (
+                <div className="min-w-0">
+                  <SalesContactsList
+                    contacts={site.salesContacts}
+                    variant="dark"
+                    layout="footer"
+                    title="Kinh doanh"
+                  />
+                </div>
+              )}
+            </div>
+          </div>
         </div>
 
         <div className="mt-10 flex flex-col gap-3 border-t border-brand-700/80 pt-6 text-xs leading-relaxed text-brand-300 sm:flex-row sm:items-center sm:justify-between">
