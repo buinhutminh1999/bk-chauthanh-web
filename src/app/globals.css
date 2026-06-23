@@ -1,0 +1,260 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: var(--font-dm-serif);
+  --font-body: var(--font-source-sans);
+
+  --color-brand-50: #f0f5f3;
+  --color-brand-100: #dce8e2;
+  --color-brand-200: #b8d1c5;
+  --color-brand-300: #8fb5a3;
+  --color-brand-400: #5f9478;
+  --color-brand-500: #3d7560;
+  --color-brand-600: #2d5a4a;
+  --color-brand-700: #244a3d;
+  --color-brand-800: #1a3d32;
+  --color-brand-900: #0f2a22;
+
+  --color-accent: #c9a227;
+  --color-accent-light: #e8c547;
+  --color-surface: #f7f4ef;
+  --color-surface-elevated: #ffffff;
+  --color-ink: #1a1f1c;
+  --color-ink-muted: #5c6560;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body), system-ui, sans-serif;
+  color: var(--color-ink);
+  background: var(--color-surface);
+}
+
+.grain-overlay {
+  position: relative;
+}
+
+.grain-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.035;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+.prose-content h2 {
+  font-family: var(--font-display), serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--color-brand-800);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose-content h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-brand-700);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose-content p {
+  margin-bottom: 1rem;
+  line-height: 1.75;
+  color: var(--color-ink-muted);
+}
+
+.prose-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+.prose-content ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-ink-muted);
+}
+
+.prose-content li {
+  margin-bottom: 0.35rem;
+  line-height: 1.65;
+}
+
+.prose-content strong {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+
+.prose-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.875rem;
+  display: block;
+  overflow-x: auto;
+}
+
+.prose-content thead {
+  background: var(--color-brand-50);
+}
+
+.prose-content th,
+.prose-content td {
+  border: 1px solid var(--color-brand-200);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.prose-content th {
+  font-weight: 600;
+  color: var(--color-brand-800);
+}
+
+.prose-content tr:nth-child(even) td {
+  background: var(--color-brand-50);
+}
+
+.safe-area-pb {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.pb-mobile-cta {
+  padding-bottom: calc(3.5rem + env(safe-area-inset-bottom, 0px));
+}
+
+@media (min-width: 1024px) {
+  .pb-mobile-cta {
+    padding-bottom: 0;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.7s ease-out forwards;
+}
+
+.animate-delay-100 {
+  animation-delay: 100ms;
+}
+
+.animate-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animate-delay-300 {
+  animation-delay: 300ms;
+}
+
+.animate-delay-400 {
+  animation-delay: 400ms;
+}
+
+.brand-line-1 {
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.1;
+  color: #a8bcc9;
+  text-transform: uppercase;
+}
+
+.brand-line-2 {
+  margin-top: 0.15rem;
+  font-family: var(--font-display), serif;
+  font-size: clamp(1.15rem, 2vw, 1.55rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: #e52329;
+  white-space: nowrap;
+  text-shadow:
+    1px 0 0 #000,
+    -1px 0 0 #000,
+    0 1px 0 #000,
+    0 -1px 0 #000,
+    2px 2px 0 rgba(0, 0, 0, 0.85);
+}
+
+.brand-line-2-locality {
+  margin-left: 0.35em;
+  font-size: 0.62em;
+  font-family: var(--font-body), sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #e52329;
+  text-shadow:
+    1px 0 0 #fff,
+    -1px 0 0 #fff,
+    0 1px 0 #fff,
+    0 -1px 0 #fff,
+    1px 1px 0 #000;
+}
+
+.brand-line-3 {
+  margin-top: 0.22rem;
+  font-size: clamp(0.5rem, 0.95vw, 0.62rem);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  line-height: 1.15;
+  color: #d4e0e8;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+@media (min-width: 1024px) {
+  .brand-line-1 {
+    font-size: 0.68rem;
+  }
+
+  .brand-line-2 {
+    font-size: 1.6rem;
+  }
+
+  .brand-line-3 {
+    font-size: 0.62rem;
+  }
+}
+
+.footer-brand .brand-line-2,
+.footer-brand .brand-line-3 {
+  white-space: normal;
+}
+
+.footer-brand .brand-line-2 {
+  font-size: 1.2rem;
+  line-height: 1.15;
+}
+
+.footer-brand .brand-line-3 {
+  font-size: 0.58rem;
+  line-height: 1.35;
+  max-width: 20rem;
+}
+
+.brand-mark-stacked .brand-line-2 {
+  font-size: clamp(1.05rem, 2.5vw, 1.35rem);
+  white-space: normal;
+}
+
+.brand-mark-stacked .brand-line-3 {
+  white-space: normal;
+  max-width: 18rem;
+}

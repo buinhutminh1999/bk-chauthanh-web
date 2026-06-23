@@ -1,0 +1,104 @@
+[
+  {
+    "id": "proj-001",
+    "slug": "cung-cap-ong-cong-thoat-nuoc-chau-thanh",
+    "title": "Cung cấp ống cống bê tông ly tâm hệ thống thoát nước",
+    "location": "Huyện Châu Thành, An Giang",
+    "productTypes": ["Cống bê tông"],
+    "description": "Cung cấp ống cống bê tông ly tâm các cỡ D600–D2000 phục vụ hệ thống thoát nước khu vực, đảm bảo tiến độ và chất lượng theo TCVN.",
+    "images": [
+      "/images/imported/ong-cong-be-tong-ly-tam/2-quy-trinh-san-xuat-ong-cong-be-tong-ly-tam.jpg",
+      "/images/imported/ong-cong-be-tong-ly-tam/5-nha-may-san-xuat-ong-cong-be-tong-ly-tam.jpg"
+    ],
+    "year": "2024",
+    "featured": true,
+    "published": true,
+    "createdAt": "2024-06-15T08:00:00.000Z",
+    "updatedAt": "2026-06-20T08:00:00.000Z"
+  },
+  {
+    "id": "proj-002",
+    "slug": "coc-be-tong-du-ung-luc-kcn",
+    "title": "Cung cấp cọc bê tông ly tâm dự ứng lực KCN",
+    "location": "An Giang",
+    "productTypes": ["Cọc bê tông"],
+    "description": "Sản xuất và cung cấp cọc ly tâm dự ứng lực đường kính 300–500mm cho dự án khu công nghiệp, nghiệm thu theo TCVN 7888:2014.",
+    "images": [
+      "/images/imported/coc-be-tong-ly-tam-du-ung-luc/0-coc-be-tong-ly-tam.jpg",
+      "/images/imported/coc-be-tong-ly-tam-du-ung-luc/1-coc-be-tong-tron.jpg"
+    ],
+    "year": "2023",
+    "featured": true,
+    "published": true,
+    "createdAt": "2023-09-10T08:00:00.000Z",
+    "updatedAt": "2026-06-20T08:00:00.000Z"
+  },
+  {
+    "id": "proj-003",
+    "slug": "gach-via-he-do-thi",
+    "title": "Gạch vỉa hè terrazzo khu đô thị",
+    "location": "Long Xuyên, An Giang",
+    "productTypes": ["Gạch bê tông"],
+    "description": "Cung cấp gạch vỉa hè terrazzo đa màu, kích thước 200×200 và 300×300mm cho công trình hạ tầng đô thị.",
+    "images": [
+      "/images/imported/gach-via-he/1-nha-may-tao-gach-via-he.jpg",
+      "/images/imported/gach-via-he/3-cac-loai-gach-via-he.jpg"
+    ],
+    "year": "2024",
+    "featured": true,
+    "published": true,
+    "createdAt": "2024-03-20T08:00:00.000Z",
+    "updatedAt": "2026-06-20T08:00:00.000Z"
+  },
+  {
+    "id": "proj-004",
+    "slug": "gach-block-nha-xuong",
+    "title": "Gạch block bê tông nhà xưởng",
+    "location": "Châu Thành, An Giang",
+    "productTypes": ["Gạch bê tông"],
+    "description": "Sản xuất và giao gạch block bê tông kích thước 100×200×400mm phục vụ xây dựng nhà xưởng và công trình dân dụng.",
+    "images": [
+      "/images/imported/gach-be-tong/2-nha-may-tao-gach-be-tong.jpg",
+      "/images/imported/gach-be-tong/3-dong-goi-van-chuyen-gach-be-tong.jpg"
+    ],
+    "year": "2023",
+    "featured": false,
+    "published": true,
+    "createdAt": "2023-11-05T08:00:00.000Z",
+    "updatedAt": "2026-06-20T08:00:00.000Z"
+  },
+  {
+    "id": "proj-005",
+    "slug": "be-tong-nhua-duong-ql91",
+    "title": "Bê tông nhựa nóng hạ tầng giao thông",
+    "location": "Quốc lộ 91, An Giang",
+    "productTypes": ["Bê tông nhựa"],
+    "description": "Cung cấp bê tông nhựa nóng các cấp phối C9.5–C19 phục vụ sửa chữa và nâng cấp mặt đường.",
+    "images": [
+      "/images/imported/be-tong-nhua-nong/1-be-tong-nhua-nong.jpg",
+      "/images/imported/be-tong-nhua-nong/4-be-tong-nhua-nong-c12.5.jpg"
+    ],
+    "year": "2024",
+    "featured": false,
+    "published": true,
+    "createdAt": "2024-01-12T08:00:00.000Z",
+    "updatedAt": "2026-06-20T08:00:00.000Z"
+  },
+  {
+    "id": "proj-006",
+    "slug": "uhpc-nap-ho-ga-trang-tri",
+    "title": "Sản phẩm UHPC — nắp hố ga & trang trí",
+    "location": "Miền Tây",
+    "productTypes": ["Bê tông đặc biệt"],
+    "description": "Sản xuất sản phẩm bê tông siêu tính năng UHPC: nắp hố ga, gạch trang trí, gờ bó vỉa phục vụ hạ tầng đô thị.",
+    "images": [
+      "/images/imported/be-tong-sieu-tinh-nang-uhpc/2-be-tong-uhpc-1.jpg",
+      "/images/imported/be-tong-sieu-tinh-nang-uhpc/3-be-tong-uhpc-2.jpg"
+    ],
+    "year": "2024",
+    "featured": true,
+    "published": true,
+    "createdAt": "2024-08-01T08:00:00.000Z",
+    "updatedAt": "2026-06-20T08:00:00.000Z"
+  }
+]

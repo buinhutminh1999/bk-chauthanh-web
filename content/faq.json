@@ -1,0 +1,50 @@
+[
+  {
+    "id": "faq-001",
+    "question": "Nhà máy phục vụ khu vực nào?",
+    "answer": "Chúng tôi cung cấp và hỗ trợ vận chuyển chủ yếu tại An Giang, Long An và các tỉnh Miền Tây. Với đơn hàng lớn hoặc dự án đặc biệt, có thể thương lượng giao đến các khu vực khác.",
+    "order": 1
+  },
+  {
+    "id": "faq-002",
+    "question": "Sản phẩm có đạt tiêu chuẩn TCVN không?",
+    "answer": "Các sản phẩm chủ lực như cống ly tâm, cọc bê tông dự ứng lực, gạch bê tông được sản xuất và nghiệm thu theo các tiêu chuẩn TCVN hiện hành (ví dụ TCVN 9113-2012, TCVN 7888:2014). Chúng tôi cung cấp hồ sơ chứng nhận và bản vẽ kỹ thuật theo yêu cầu dự án.",
+    "order": 2
+  },
+  {
+    "id": "faq-003",
+    "question": "Có sản xuất theo quy cách thiết kế riêng không?",
+    "answer": "Có. Cọc bê tông, cống và một số sản phẩm có thể sản xuất theo hồ sơ thiết kế của chủ đầu tư hoặc tư vấn thiết kế, trong phạm vi năng lực dây chuyền nhà máy.",
+    "order": 3
+  },
+  {
+    "id": "faq-004",
+    "question": "Thời gian giao hàng thường bao lâu?",
+    "answer": "Đơn hàng thông dụng: 3–7 ngày làm việc tùy số lượng và loại sản phẩm. Đơn hàng lớn hoặc quy cách đặc biệt cần lên kế hoạch sản xuất — vui lòng liên hệ để được báo tiến độ cụ thể.",
+    "order": 4
+  },
+  {
+    "id": "faq-005",
+    "question": "Có giao tại công trình không?",
+    "answer": "Có. Chúng tôi hỗ trợ vận chuyển và giao tại công trình trong khu vực. Phí vận chuyển tính theo quãng đường và loại hàng.",
+    "order": 5
+  },
+  {
+    "id": "faq-006",
+    "question": "Làm sao để nhận báo giá?",
+    "answer": "Gọi hotline 079 555 5777, chat Zalo hoặc gửi form liên hệ trên website với thông tin: loại sản phẩm, quy cách, số lượng và địa điểm công trình. Bộ phận kinh doanh sẽ phản hồi trong giờ làm việc.",
+    "order": 6
+  },
+  {
+    "id": "faq-007",
+    "question": "Có tư vấn kỹ thuật khi chọn sản phẩm không?",
+    "answer": "Có. Đội ngũ kỹ thuật am hiểu vật liệu xây dựng sẵn sàng tư vấn lựa chọn quy cách cống, cọc, gạch hoặc cấp phối bê tông nhựa phù hợp dự án.",
+    "order": 7
+  },
+  {
+    "id": "faq-008",
+    "question": "Giờ làm việc và liên hệ?",
+    "answer": "Thứ 2 — Thứ 6: 7:30 — 17:00. Địa chỉ: Ấp Bình Phú 2, Xã Bình Hòa, Huyện Châu Thành, An Giang. Email: bachkhoachauthanh@gmail.com.",
+    "order": 8
+  }
+]

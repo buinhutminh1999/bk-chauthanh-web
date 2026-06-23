@@ -1,0 +1,55 @@
+{
+  "companyName": "Công ty Cổ phần Sản xuất Bách Khoa Châu Thành",
+  "shortName": "Bách Khoa Châu Thành",
+  "tagline": "Vật liệu xây dựng chất lượng — Uy tín từ sản xuất",
+  "description": "Nhà máy bê tông Châu Thành — sản xuất cống bê tông ly tâm, cọc bê tông dự ứng lực, gạch bê tông, gạch vỉa hè, bê tông nhựa nóng và bê tông siêu tính năng UHPC tại Châu Thành, An Giang.",
+  "phone": "079 555 5777",
+  "email": "bachkhoachauthanh@gmail.com",
+  "address": "Ấp Bình Phú 2, Xã Bình Hòa, Huyện Châu Thành, An Giang",
+  "foundedYear": 2010,
+  "parentCompany": "Công ty Cổ phần Xây dựng Bách Khoa",
+  "brand": {
+    "prefix": "CÔNG TY CỔ PHẦN SẢN XUẤT",
+    "name": "BÁCH KHOA",
+    "locality": "CHÂU THÀNH",
+    "slogan": "VẬT LIỆU XÂY DỰNG — UY TÍN TỪ SẢN XUẤT"
+  },
+  "salesContacts": [
+    {
+      "role": "TGĐ",
+      "name": "Mr Út",
+      "phone": "0907.636.372"
+    },
+    {
+      "role": "NVKD",
+      "name": "Ms Thư",
+      "phone": "0345.566.204"
+    },
+    {
+      "role": "NVKD",
+      "name": "Ms Linh",
+      "phone": "0339.025.061"
+    }
+  ],
+  "stats": [
+    {
+      "label": "Năm kinh nghiệm",
+      "value": "15+"
+    },
+    {
+      "label": "Dòng sản phẩm",
+      "value": "9+"
+    },
+    {
+      "label": "Công trình phục vụ",
+      "value": "500+"
+    },
+    {
+      "label": "Nhân sự",
+      "value": "120+"
+    }
+  ],
+  "social": {
+    "facebook": "https://www.facebook.com/profile.php?id=100090671474567"
+  }
+}

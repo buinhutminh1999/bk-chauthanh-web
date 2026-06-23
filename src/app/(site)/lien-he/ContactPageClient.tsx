@@ -1,0 +1,261 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { MapPin, Mail, Phone, Send, MessageCircle } from "lucide-react";
+import { PageHeader } from "@/components/shared/PageHeader";
+import { Container } from "@/components/ui/Container";
+import { Button } from "@/components/ui/Button";
+import { telLink, zaloLink } from "@/lib/site-constants";
+import { useContactForm } from "@/lib/use-contact-form";
+import { SalesContactsList } from "@/components/shared/SalesContactsList";
+import type { SalesContact } from "@/types/content";
+
+type SiteInfo = {
+  companyName: string;
+  phone: string;
+  email: string;
+  address: string;
+  facebook?: string;
+  salesContacts?: SalesContact[];
+};
+
+const PRODUCT_OPTIONS = [
+  "Cống bê tông ly tâm",
+  "Cọc bê tông dự ứng lực",
+  "Gạch bê tông / Gạch vỉa hè",
+  "Bê tông nhựa nóng",
+  "Bê tông UHPC",
+  "Khác",
+];
+
+export function ContactPageClient({ site }: { site: SiteInfo }) {
+  const { loading, sent, error, submit } = useContactForm();
+  const [productPreset, setProductPreset] = useState(PRODUCT_OPTIONS[0]);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const fromQuery = params.get("product");
+    if (fromQuery) setProductPreset(fromQuery);
+  }, []);
+
+  const mapQuery = encodeURIComponent(site.address);
+  const embedSrc = `https://maps.google.com/maps?q=${mapQuery}&t=&z=14&ie=UTF8&iwloc=&output=embed`;
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    await submit({
+      name: String(fd.get("name") ?? ""),
+      phone: String(fd.get("phone") ?? ""),
+      email: String(fd.get("email") ?? ""),
+      product: String(fd.get("product") ?? ""),
+      message: String(fd.get("message") ?? ""),
+    });
+  }
+
+  return (
+    <>
+      <PageHeader
+        breadcrumb="Liên hệ"
+        title="Liên hệ với chúng tôi"
+        subtitle="Tư vấn sản phẩm, báo giá và hỗ trợ kỹ thuật cho dự án của bạn"
+      />
+      <section className="py-16 lg:py-20">
+        <Container>
+          <div className="grid lg:grid-cols-5 gap-12">
+            <div className="lg:col-span-2 space-y-6">
+              <h2 className="font-display text-2xl text-brand-900">Thông tin liên hệ</h2>
+
+              {site.address && (
+                <div className="flex gap-4">
+                  <MapPin className="h-5 w-5 text-brand-600 shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-medium text-ink">{site.companyName}</p>
+                    <p className="text-sm text-ink-muted mt-1">{site.address}</p>
+                  </div>
+                </div>
+              )}
+
+              {site.phone && (
+                <div className="flex gap-4">
+                  <Phone className="h-5 w-5 text-brand-600 shrink-0" />
+                  <a
+                    href={telLink(site.phone)}
+                    className="text-ink hover:text-brand-700 font-medium"
+                  >
+                    {site.phone}
+                  </a>
+                </div>
+              )}
+
+              {site.phone && (
+                <div className="flex gap-4">
+                  <MessageCircle className="h-5 w-5 text-[#0068FF] shrink-0" />
+                  <a
+                    href={zaloLink(site.phone)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-ink hover:text-brand-700"
+                  >
+                    Chat Zalo
+                  </a>
+                </div>
+              )}
+
+              {site.email && (
+                <div className="flex gap-4">
+                  <Mail className="h-5 w-5 text-brand-600 shrink-0" />
+                  <a href={`mailto:${site.email}`} className="text-ink hover:text-brand-700">
+                    {site.email}
+                  </a>
+                </div>
+              )}
+
+              {site.facebook && (
+                <div className="flex gap-4">
+                  <span className="text-brand-600 font-semibold text-sm shrink-0">FB</span>
+                  <a
+                    href={site.facebook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-ink hover:text-brand-700 text-sm"
+                  >
+                    Fanpage Nhà Máy Bê Tông Châu Thành
+                  </a>
+                </div>
+              )}
+
+              <div className="flex flex-wrap gap-3">
+                {site.phone && (
+                  <>
+                    <a
+                      href={telLink(site.phone)}
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-brand-700 text-white text-sm font-medium hover:bg-brand-800"
+                    >
+                      <Phone className="h-4 w-4" />
+                      Gọi ngay
+                    </a>
+                    <a
+                      href={zaloLink(site.phone)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#0068FF] text-white text-sm font-medium hover:bg-[#0058D6]"
+                    >
+                      <MessageCircle className="h-4 w-4" />
+                      Zalo
+                    </a>
+                  </>
+                )}
+              </div>
+
+              <div className="p-6 rounded-xl bg-brand-50 border border-brand-100 text-sm text-ink-muted">
+                <p>
+                  Giờ làm việc: Thứ 2 — Thứ 6, 7:30 — 17:00. Liên hệ qua điện thoại hoặc email
+                  để được phản hồi nhanh nhất.
+                </p>
+              </div>
+
+              {site.salesContacts && site.salesContacts.length > 0 && (
+                <SalesContactsList contacts={site.salesContacts} />
+              )}
+            </div>
+
+            <div className="lg:col-span-3">
+              <div className="p-8 rounded-2xl bg-white border border-brand-100 shadow-sm">
+                <h2 className="font-display text-xl text-brand-900 mb-6">Gửi yêu cầu tư vấn</h2>
+
+                {sent ? (
+                  <div className="py-12 text-center">
+                    <p className="text-brand-700 font-medium">Cảm ơn bạn đã liên hệ!</p>
+                    <p className="mt-2 text-sm text-ink-muted">
+                      Chúng tôi sẽ phản hồi trong thời gian sớm nhất. Hoặc gọi trực tiếp:{" "}
+                      {site.phone}
+                    </p>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-5">
+                    {error && (
+                      <p className="text-sm text-red-600 bg-red-50 border border-red-100 rounded-lg px-3 py-2">
+                        {error}
+                      </p>
+                    )}
+                    <div className="grid sm:grid-cols-2 gap-5">
+                      <label className="block">
+                        <span className="text-sm font-medium text-ink">Họ và tên *</span>
+                        <input
+                          required
+                          name="name"
+                          type="text"
+                          className="mt-1.5 w-full px-4 py-2.5 rounded-lg border border-brand-200 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500"
+                        />
+                      </label>
+                      <label className="block">
+                        <span className="text-sm font-medium text-ink">Điện thoại *</span>
+                        <input
+                          required
+                          name="phone"
+                          type="tel"
+                          className="mt-1.5 w-full px-4 py-2.5 rounded-lg border border-brand-200 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500"
+                        />
+                      </label>
+                    </div>
+                    <label className="block">
+                      <span className="text-sm font-medium text-ink">Email</span>
+                      <input
+                        name="email"
+                        type="email"
+                        className="mt-1.5 w-full px-4 py-2.5 rounded-lg border border-brand-200 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500"
+                      />
+                    </label>
+                    <label className="block">
+                      <span className="text-sm font-medium text-ink">Sản phẩm quan tâm</span>
+                      <select
+                        name="product"
+                        value={productPreset}
+                        onChange={(e) => setProductPreset(e.target.value)}
+                        className="mt-1.5 w-full px-4 py-2.5 rounded-lg border border-brand-200 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500 bg-white"
+                      >
+                        {PRODUCT_OPTIONS.map((opt) => (
+                          <option key={opt} value={opt}>{opt}</option>
+                        ))}
+                        {!PRODUCT_OPTIONS.includes(productPreset) && (
+                          <option value={productPreset}>{productPreset}</option>
+                        )}
+                      </select>
+                    </label>
+                    <label className="block">
+                      <span className="text-sm font-medium text-ink">Nội dung *</span>
+                      <textarea
+                        required
+                        name="message"
+                        rows={4}
+                        className="mt-1.5 w-full px-4 py-2.5 rounded-lg border border-brand-200 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:border-brand-500 resize-y"
+                        placeholder="Mô tả dự án, quy cách cần tư vấn..."
+                      />
+                    </label>
+                    <Button type="submit" size="lg" disabled={loading}>
+                      <Send className="h-4 w-4" />
+                      {loading ? "Đang gửi..." : "Gửi yêu cầu"}
+                    </Button>
+                  </form>
+                )}
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-16 rounded-2xl overflow-hidden ring-1 ring-brand-100 shadow-lg">
+            <iframe
+              title="Bản đồ nhà máy Bách Khoa Châu Thành"
+              src={embedSrc}
+              className="w-full h-[400px] lg:h-[480px] border-0"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
+          </div>
+        </Container>
+      </section>
+    </>
+  );
+}
