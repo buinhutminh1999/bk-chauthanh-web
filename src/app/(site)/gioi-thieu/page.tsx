@@ -70,7 +70,7 @@ export default async function AboutPage() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {site.stats.map((stat) => (
               <div key={stat.label} className="text-center">
-                <p className="font-display text-3xl text-brand-800">{stat.value}</p>
+                <p className="font-display text-xl sm:text-2xl lg:text-3xl text-brand-800">{stat.value}</p>
                 <p className="mt-1 text-sm text-ink-muted">{stat.label}</p>
               </div>
             ))}

@@ -16,6 +16,7 @@ export function BrandMark({
   className,
   showTextFrom = "md",
   layout = "horizontal",
+  context = "default",
 }: {
   brand?: SiteBrand;
   companyName: string;
@@ -23,6 +24,7 @@ export function BrandMark({
   className?: string;
   showTextFrom?: "sm" | "md" | "lg" | "always";
   layout?: "horizontal" | "stacked";
+  context?: "default" | "header";
 }) {
   const textVisibility = {
     always: "flex",
@@ -64,13 +66,16 @@ export function BrandMark({
   const layoutClass =
     layout === "stacked"
       ? "brand-mark-stacked flex flex-col items-start gap-3"
-      : "flex items-center gap-2.5 lg:gap-3";
+      : cn(
+          "flex items-center gap-2.5 lg:gap-3",
+          context === "header" && "brand-mark-header",
+        );
 
   if (href) {
     return (
       <Link
         href={href}
-        className={cn(layoutClass, "group shrink-0 min-w-0", className)}
+        className={cn(layoutClass, "group min-w-0 max-w-full", className)}
       >
         {content}
       </Link>

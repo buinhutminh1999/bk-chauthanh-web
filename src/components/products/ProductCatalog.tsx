@@ -26,9 +26,9 @@ export function ProductCatalog({ products }: { products: Product[] }) {
 
   return (
     <>
-      <div className="-mx-4 px-4 sm:mx-0 sm:px-0">
+      <div className="scroll-hint-x mb-10">
         <div
-          className="flex gap-2 mb-10 overflow-x-auto pb-2 scrollbar-thin snap-x snap-mandatory sm:flex-wrap sm:overflow-visible sm:snap-none"
+          className="flex min-w-0 max-w-full gap-2 overflow-x-auto overscroll-x-contain pb-2 scrollbar-thin snap-x snap-mandatory sm:flex-wrap sm:overflow-visible sm:snap-none"
           role="tablist"
           aria-label="Lọc sản phẩm"
         >

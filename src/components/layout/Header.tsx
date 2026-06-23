@@ -69,10 +69,10 @@ export function Header({
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-brand-800/40 bg-brand-900 text-white shadow-lg shadow-brand-900/20">
+    <header className="sticky top-0 z-50 w-full min-w-0 border-b border-brand-800/40 bg-brand-900 text-white shadow-lg shadow-brand-900/20 overflow-x-hidden">
       <Container>
-        <div className="grid grid-cols-[auto_1fr_auto] items-center gap-x-3 sm:gap-x-4 h-16 lg:h-[4.75rem]">
-          <BrandMark brand={brand} companyName={companyName} showTextFrom="md" />
+        <div className="grid min-w-0 grid-cols-[minmax(0,auto)_1fr_auto] items-center gap-x-3 sm:gap-x-4 h-16 lg:h-[4.75rem]">
+          <BrandMark brand={brand} companyName={companyName} showTextFrom="lg" context="header" />
 
           <nav className="hidden lg:flex items-center justify-center gap-0.5 min-w-0" aria-label="Chính">
             {NAV_BEFORE_PRODUCTS.map((item) => (
@@ -144,7 +144,7 @@ export function Header({
             ))}
           </nav>
 
-          <div className="flex items-center justify-end gap-1.5 sm:gap-2 shrink-0">
+          <div className="flex min-w-0 items-center justify-end gap-1.5 sm:gap-2">
             {phone && (
               <a
                 href={telLink(phone)}
@@ -240,7 +240,7 @@ export function Header({
           {phone && (
             <a
               href={telLink(phone)}
-              className="mt-2 flex min-h-11 items-center justify-center gap-2 px-4 py-3 rounded-lg bg-brand-700 text-white font-medium whitespace-nowrap"
+              className="mt-2 flex min-h-11 items-center justify-center gap-2 px-4 py-3 rounded-lg bg-brand-700 text-white font-medium"
             >
               <Phone className="h-4 w-4" />
               Gọi {phone}

@@ -30,7 +30,7 @@ export function TrustStrip() {
     <>
       <section className="border-y border-brand-100 bg-white">
         <Container className="py-8 lg:py-10">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             {TRUST_ITEMS.map((item, i) => {
               const Icon = ICONS[i];
               return (
@@ -84,7 +84,7 @@ export function TrustStrip() {
               <button
                 type="button"
                 onClick={() => setActive(null)}
-                className="shrink-0 rounded-lg p-2 text-ink-muted hover:bg-brand-50 hover:text-brand-800"
+                className="touch-target shrink-0 flex items-center justify-center rounded-lg text-ink-muted hover:bg-brand-50 hover:text-brand-800"
                 aria-label="Đóng"
               >
                 <X className="h-5 w-5" />

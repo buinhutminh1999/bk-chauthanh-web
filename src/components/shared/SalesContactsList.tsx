@@ -69,7 +69,6 @@ export function SalesContactsList({
               className={cn(
                 "text-sm font-medium leading-snug",
                 isDark ? "text-brand-100" : "text-ink",
-                isEmbedded && "sm:whitespace-nowrap",
               )}
             >
               {contactLabel(contact)}
@@ -81,7 +80,7 @@ export function SalesContactsList({
               <a
                 href={telLink(contact.phone)}
                 className={cn(
-                  "inline-flex min-h-10 items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-semibold tabular-nums transition-colors",
+                  "inline-flex min-h-11 items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-semibold tabular-nums transition-colors",
                   isDark
                     ? "bg-brand-700/60 text-white hover:bg-brand-700"
                     : "bg-brand-50 text-brand-800 hover:bg-brand-100",
@@ -95,7 +94,7 @@ export function SalesContactsList({
                 target="_blank"
                 rel="noopener noreferrer"
                 className={cn(
-                  "inline-flex min-h-10 items-center gap-1 rounded-lg px-3 py-2 text-xs font-medium transition-colors",
+                  "inline-flex min-h-11 items-center gap-1 rounded-lg px-3 py-2 text-xs font-medium transition-colors",
                   isDark
                     ? "bg-zalo/20 text-zalo-light hover:bg-zalo/30"
                     : "bg-zalo/10 text-zalo hover:bg-zalo/15",

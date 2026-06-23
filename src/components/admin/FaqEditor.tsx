@@ -68,7 +68,7 @@ export function FaqEditor({ initial }: { initial: FaqItem[] }) {
             <button
               type="button"
               onClick={() => removeItem(item.id)}
-              className="min-h-10 px-3 text-xs font-medium text-danger hover:bg-danger-muted rounded-lg transition-colors"
+              className="min-h-11 px-3 text-xs font-medium text-danger hover:bg-danger-muted rounded-lg transition-colors"
             >
               Xóa
             </button>

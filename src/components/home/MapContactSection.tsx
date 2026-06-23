@@ -51,7 +51,7 @@ export function ContactDetails({
         </li>
         <li className="flex items-center gap-3 min-w-0">
           <Mail className="h-5 w-5 shrink-0 text-brand-600" />
-          <a href={`mailto:${email}`} className="truncate text-ink hover:text-brand-700">
+          <a href={`mailto:${email}`} className="break-all text-ink hover:text-brand-700">
             {email}
           </a>
         </li>
@@ -85,14 +85,14 @@ export function ContactMap({
   return (
     <div
       className={cn(
-        "h-full min-h-[280px] overflow-hidden rounded-2xl shadow-lg ring-1 ring-brand-100 aspect-video sm:aspect-auto sm:min-h-[320px] lg:min-h-0",
+        "h-full min-h-[280px] max-w-full overflow-hidden rounded-2xl shadow-lg ring-1 ring-brand-100 aspect-video sm:aspect-auto sm:min-h-[320px] lg:min-h-0",
         className,
       )}
     >
       <iframe
         title="Bản đồ nhà máy Bách Khoa Châu Thành"
         src={mapEmbedSrc(address)}
-        className="h-full min-h-[320px] w-full border-0 lg:min-h-full"
+        className="h-full min-h-[280px] sm:min-h-[320px] w-full max-w-full border-0 lg:min-h-full"
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
         allowFullScreen

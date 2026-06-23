@@ -27,11 +27,11 @@ export function FacebookSection({ facebookUrl }: { facebookUrl: string }) {
               <ExternalLink className="h-4 w-4" />
             </a>
           </div>
-          <div className="rounded-2xl overflow-hidden ring-1 ring-brand-100 bg-white shadow-md">
+          <div className="rounded-2xl max-w-full overflow-hidden ring-1 ring-brand-100 bg-white shadow-md">
             <iframe
               title="Facebook Bách Khoa Châu Thành"
               src={`https://www.facebook.com/plugins/page.php?href=${encodeURIComponent(facebookUrl)}&tabs=timeline&width=500&height=400&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true`}
-              className="w-full h-[400px] border-0"
+              className="w-full max-w-full h-[360px] sm:h-[400px] border-0"
               loading="lazy"
               allow="encrypted-media"
             />

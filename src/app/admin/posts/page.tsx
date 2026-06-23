@@ -36,7 +36,7 @@ export default async function AdminPostsPage() {
             </div>
             <Link
               href={`/admin/posts/${p.id}/edit`}
-              className="mt-3 inline-flex min-h-10 items-center gap-1.5 text-sm font-medium text-brand-700 hover:text-brand-900"
+              className="mt-3 inline-flex min-h-11 items-center gap-1.5 text-sm font-medium text-brand-700 hover:text-brand-900"
             >
               <Pencil className="h-4 w-4" />
               Chỉnh sửa

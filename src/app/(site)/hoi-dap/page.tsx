@@ -44,7 +44,7 @@ export default async function FaqPage() {
               <Button href="/lien-he">Liên hệ báo giá</Button>
               <Link
                 href="/san-pham"
-                className="inline-flex items-center px-5 py-2.5 rounded-lg border border-brand-200 text-sm font-medium text-brand-800 hover:bg-white"
+                className="inline-flex min-h-11 items-center px-5 py-2.5 rounded-lg border border-brand-200 text-sm font-medium text-brand-800 hover:bg-white"
               >
                 Xem sản phẩm
               </Link>

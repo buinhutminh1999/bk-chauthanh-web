@@ -13,8 +13,9 @@ export function ProductContentTabs({ tabs }: { tabs: Tab[] }) {
 
   return (
     <div>
+      <div className="scroll-hint-x">
       <div
-        className="flex gap-2 border-b border-brand-100 pb-1 mb-8 overflow-x-auto scrollbar-thin -mx-1 px-1 snap-x sm:flex-wrap sm:overflow-visible sm:snap-none"
+        className="flex min-w-0 max-w-full gap-2 border-b border-brand-100 pb-1 mb-8 overflow-x-auto overscroll-x-contain scrollbar-thin snap-x sm:flex-wrap sm:overflow-visible sm:snap-none"
         role="tablist"
         aria-label="Nội dung sản phẩm"
       >
@@ -35,6 +36,7 @@ export function ProductContentTabs({ tabs }: { tabs: Tab[] }) {
             {tab.label}
           </button>
         ))}
+      </div>
       </div>
       <div className="prose-content max-w-none" role="tabpanel">
         {current?.sections.map((section) => (

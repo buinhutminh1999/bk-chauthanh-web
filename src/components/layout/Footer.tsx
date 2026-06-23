@@ -81,7 +81,7 @@ export function Footer({ site }: { site: SiteConfig }) {
   const products = footerProductLinks();
 
   return (
-    <footer className="border-t border-brand-700 bg-brand-900 text-brand-100">
+    <footer className="w-full min-w-0 border-t border-brand-700 bg-brand-900 text-brand-100 overflow-x-hidden">
       <Container className="py-12 lg:py-14">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-x-8 lg:gap-y-10 items-start">
           <div className="sm:col-span-2 lg:col-span-4">

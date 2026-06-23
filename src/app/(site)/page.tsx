@@ -94,7 +94,7 @@ export default async function HomePage() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {site.stats.map((stat) => (
               <div key={stat.label} className="text-center">
-                <p className="font-display text-2xl sm:text-3xl lg:text-4xl text-brand-800">{stat.value}</p>
+                <p className="font-display text-xl sm:text-2xl lg:text-3xl text-brand-800">{stat.value}</p>
                 <p className="mt-1 text-sm text-ink-muted">{stat.label}</p>
               </div>
             ))}
@@ -166,8 +166,8 @@ export default async function HomePage() {
               Đến nhà máy hoặc gửi yêu cầu báo giá
             </h2>
           </div>
-          <div className="grid gap-6 lg:grid-cols-12 lg:gap-8 lg:items-stretch lg:min-h-[500px]">
-            <div className="lg:col-span-4">
+          <div className="grid min-w-0 gap-6 lg:grid-cols-12 lg:gap-8 lg:items-stretch lg:min-h-[500px]">
+            <div className="min-w-0 max-w-full lg:col-span-4">
               <ContactDetails
                 address={site.address}
                 phone={site.phone}
@@ -176,10 +176,10 @@ export default async function HomePage() {
                 salesContacts={site.salesContacts}
               />
             </div>
-            <div className="lg:col-span-5">
+            <div className="min-w-0 max-w-full lg:col-span-5">
               <ContactMap address={site.address} className="h-full" />
             </div>
-            <div className="lg:col-span-3">
+            <div className="min-w-0 max-w-full lg:col-span-3">
               <QuoteFormCompact phone={site.phone} className="h-full" />
             </div>
           </div>

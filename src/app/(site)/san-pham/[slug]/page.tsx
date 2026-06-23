@@ -84,10 +84,10 @@ export default async function ProductDetailPage({
             Tất cả sản phẩm
           </Link>
 
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-start">
-            <ImageGallery images={product.images} alt={product.name} />
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-start min-w-0">
+            <ImageGallery images={product.images} alt={product.name} className="min-w-0" />
 
-            <div className="space-y-6">
+            <div className="min-w-0 space-y-6">
               <div>
                 <span className="text-sm font-medium text-brand-600 uppercase tracking-wider">
                   {product.category}
@@ -125,7 +125,7 @@ export default async function ProductDetailPage({
             </div>
           </div>
 
-          <div className="mt-16">
+          <div className="mt-16 min-w-0">
             {hasTabs ? (
               <ProductContentTabs tabs={tabs} />
             ) : (

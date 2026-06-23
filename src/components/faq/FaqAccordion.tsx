@@ -32,7 +32,7 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
               onClick={() => setOpenId(open ? null : item.id)}
               className="flex min-h-11 w-full items-center justify-between gap-4 px-5 py-4 text-left hover:bg-brand-50/50 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-500"
             >
-              <span className="font-medium text-brand-900">{item.question}</span>
+              <span className="min-w-0 flex-1 font-medium text-brand-900">{item.question}</span>
               <ChevronDown
                 className={cn(
                   "h-5 w-5 shrink-0 text-brand-600 transition-transform duration-200",

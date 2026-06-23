@@ -66,7 +66,7 @@ export function ImageGallery({
 
   return (
     <>
-      <div className={cn("space-y-3", className)}>
+      <div className={cn("min-w-0 max-w-full space-y-3", className)}>
         <button
           type="button"
           onClick={() => setLightbox(true)}
@@ -94,7 +94,8 @@ export function ImageGallery({
           </span>
         </button>
         {images.length > 1 && (
-          <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-thin snap-x">
+          <div className="scroll-hint-x">
+          <div className="flex min-w-0 max-w-full gap-2 overflow-x-auto overscroll-x-contain pb-1 scrollbar-thin snap-x">
             {images.map((src, i) => (
               <button
                 key={src}
@@ -110,6 +111,7 @@ export function ImageGallery({
                 <Image src={src} alt="" fill className="object-cover" sizes="96px" />
               </button>
             ))}
+          </div>
           </div>
         )}
       </div>

@@ -3,9 +3,9 @@ import { Container } from "@/components/ui/Container";
 
 export function CTABanner() {
   return (
-    <section className="py-16 lg:py-20">
+    <section className="py-16 lg:py-20 overflow-x-hidden">
       <Container>
-        <div className="relative overflow-hidden rounded-2xl bg-brand-800 px-8 py-12 lg:px-16 lg:py-14 text-center grain-overlay">
+        <div className="relative overflow-hidden rounded-2xl bg-brand-800 px-5 py-10 sm:px-8 sm:py-12 lg:px-16 lg:py-14 text-center grain-overlay">
           <div className="absolute top-0 right-0 w-64 h-64 bg-accent/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
           <h2 className="font-display text-2xl sm:text-3xl text-white relative">
             Cần tư vấn sản phẩm hoặc báo giá?

@@ -13,16 +13,16 @@ export async function SiteShell({ children }: { children: React.ReactNode }) {
   }));
 
   return (
-    <>
+    <div className="flex min-h-full flex-1 flex-col w-full min-w-0 overflow-x-hidden">
       <Header
         companyName={site.companyName}
         brand={site.brand}
         phone={site.phone}
         products={productLinks}
       />
-      <main className="flex-1 pb-mobile-cta">{children}</main>
+      <main className="flex-1 min-w-0 w-full overflow-x-hidden pb-mobile-cta">{children}</main>
       <Footer site={site} />
       <StickyMobileCTA phone={site.phone} />
-    </>
+    </div>
   );
 }

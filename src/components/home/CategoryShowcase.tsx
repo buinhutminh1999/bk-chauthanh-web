@@ -76,7 +76,7 @@ export function CategoryShowcase({ products }: { products: Product[] }) {
         <div className="mt-10 text-center">
           <Link
             href="/san-pham"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-brand-700 text-white font-medium hover:bg-brand-800 transition-colors shadow-md"
+            className="inline-flex min-h-11 items-center justify-center gap-2 px-6 py-3 rounded-xl bg-brand-700 text-white font-medium hover:bg-brand-800 transition-colors shadow-md"
           >
             Xem toàn bộ danh mục
             <ArrowRight className="h-4 w-4" />

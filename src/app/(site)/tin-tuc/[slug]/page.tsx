@@ -79,7 +79,7 @@ export default async function PostDetailPage({
             ))}
           </div>
 
-          <h1 className="font-display text-3xl lg:text-4xl text-brand-900 leading-tight">
+          <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl text-brand-900 leading-tight">
             {post.title}
           </h1>
 
