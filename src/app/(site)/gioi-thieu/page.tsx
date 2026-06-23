@@ -98,7 +98,7 @@ export default async function AboutPage() {
               {[
                 { icon: Factory, title: "Sản xuất công nghiệp", desc: "Dây chuyền hiện đại, quy trình chuẩn" },
                 { icon: Shield, title: "Chất lượng TCVN", desc: "Kiểm định và hồ sơ minh bạch" },
-                { icon: Users, title: "Tư vấn kỹ thuật", desc: "Hỗ trợ chọn quy cách phù hợp" },
+                { icon: Users, title: "Tư vấn kỹ thuật", desc: "Hỗ trợ chọn quy cách và giải đáp kỹ thuật" },
                 { icon: MapPin, title: "Giao tại công trình", desc: "Phục vụ An Giang & Miền Tây" },
               ].map((item) => (
                 <div key={item.title} className="p-5 rounded-2xl bg-brand-50 border border-brand-100">

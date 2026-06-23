@@ -45,11 +45,13 @@ export const TRUST_ITEMS = [
       summary:
         "Sản phẩm sản xuất và nghiệm thu theo tiêu chuẩn Việt Nam, có giấy chứng nhận và hồ sơ kỹ thuật minh bạch.",
       points: [
-        "Cọc bê tông ly tâm dự ứng lực — TCVN 7888:2014",
-        "Ống cống bê tông ly tâm — TCVN 9113:2012",
-        "Gạch bê tông, gạch vỉa hè — TCVN 6355, TCVN 6065",
-        "Bê tông nhựa nóng — TCVN 8860, TCVN 8865",
-        "Cung cấp bản vẽ điển hình, bảng thông số và chứng nhận theo yêu cầu dự án",
+        "Cọc Ván Bê Tông dự ứng lực theo JIS A 5373:2016",
+        "Cọc Bê tông ly tâm phù hợp theo TCVN 7888:2014",
+        "Cống bê tông ly tâm phù hợp theo TCVN 9113:2012",
+        "Cọc vuông dự ứng lực theo TCVN 9114:2019",
+        "Gạch terrazzo phù hợp theo TCVN 7744:2013",
+        "Gạch bê tông phù hợp theo QCVN 16: 2019/BXD",
+        "Bê tông nhựa nóng phù hợp theo TCVN 13567-1: 2022",
       ],
     },
   },
@@ -71,11 +73,11 @@ export const TRUST_ITEMS = [
   },
   {
     id: "giao-hang",
-    title: "Giao tại công trình",
-    desc: "Hỗ trợ vận chuyển khu vực Miền Tây",
+    title: "Giao hàng tận nơi",
+    desc: "Giao hàng đến công trình, phối hợp tiến độ thi công và bố trí vận chuyển phù hợp từng loại sản phẩm.",
     details: {
       summary:
-        "Hỗ trợ giao hàng đến công trình, phối hợp tiến độ thi công và bố trí vận chuyển phù hợp từng loại sản phẩm.",
+        "Giao hàng đến công trình, phối hợp tiến độ thi công và bố trí vận chuyển phù hợp từng loại sản phẩm.",
       points: [
         "Giao cống, cọc, gạch và bê tông nhựa theo lịch công trình",
         "Phục vụ An Giang và các tỉnh khu vực Miền Tây",
@@ -88,16 +90,20 @@ export const TRUST_ITEMS = [
   {
     id: "tu-van",
     title: "Tư vấn kỹ thuật",
-    desc: "Đội ngũ am hiểu vật liệu xây dựng",
+    desc: "Hỗ trợ chọn quy cách và giải đáp kỹ thuật",
     details: {
       summary:
-        "Đội ngũ kinh doanh và kỹ thuật hỗ trợ lựa chọn quy cách, chủng loại vật liệu phù hợp hồ sơ thiết kế và điều kiện thi công.",
+        "Đội ngũ kỹ thuật tư vấn lựa chọn chủng loại, quy cách sản phẩm phù hợp hồ sơ thiết kế và điều kiện thi công tại công trường.",
       points: [
-        "Tư vấn chọn cọc ván, cọc ly tâm, cống theo tải trọng và địa chất",
-        "Hỗ trợ bảng thông số, bản vẽ điển hình và hồ sơ nghiệm thu",
-        "Giải đáp kỹ thuật về gạch, bê tông nhựa và sản phẩm đặc biệt",
-        "Phản hồi báo giá trong giờ làm việc qua điện thoại, Zalo hoặc email",
+        "Tư vấn chọn cọc ván, cọc ly tâm, cọc vuông và cống theo tải trọng, địa chất",
+        "Cung cấp bảng thông số, bản vẽ điển hình và hồ sơ nghiệm thu theo yêu cầu",
+        "Giải đáp kỹ thuật về gạch terrazzo, gạch bê tông, bê tông nhựa và sản phẩm đặc biệt",
+        "Báo giá và phản hồi nhanh qua điện thoại, Zalo hoặc email trong giờ làm việc",
         "Hỗ trợ sản xuất theo hồ sơ thiết kế trong phạm vi dây chuyền nhà máy",
+      ],
+      contacts: [
+        { role: "Tư vấn", name: "Anh Tài", phone: "0913.877.184" },
+        { role: "Tư vấn", name: "Anh Sang", phone: "0913.877.408" },
       ],
     },
   },

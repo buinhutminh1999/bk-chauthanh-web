@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Award, Factory, Truck, Headphones, X } from "lucide-react";
 import { Container } from "@/components/ui/Container";
+import { SalesContactsList } from "@/components/shared/SalesContactsList";
 import { TRUST_ITEMS } from "@/lib/site-constants";
 import { cn } from "@/lib/utils";
 
@@ -103,6 +104,15 @@ export function TrustStrip() {
                   </li>
                 ))}
               </ul>
+              {"contacts" in active.details && active.details.contacts && (
+                <SalesContactsList
+                  contacts={[...active.details.contacts]}
+                  title="Liên hệ tư vấn kỹ thuật"
+                  compact
+                  embedded
+                  className="mt-6 border-t border-brand-100 pt-5"
+                />
+              )}
             </div>
           </div>
         </div>
