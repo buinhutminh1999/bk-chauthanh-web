@@ -40,6 +40,10 @@ Mở http://localhost:3000
 | Biến | Mô tả |
 |------|--------|
 | `NEXT_PUBLIC_SITE_URL` | URL production (SEO, sitemap) — đổi khi có domain |
+| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | GA4 Measurement ID (tùy chọn) |
+| `NEXT_PUBLIC_GTM_ID` | Google Tag Manager (tùy chọn, ưu tiên hơn GA trực tiếp) |
+| `NEXT_PUBLIC_FB_PIXEL_ID` | Meta Pixel cho quảng cáo Facebook (tùy chọn) |
+| `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | Mã xác minh Search Console |
 | `ADMIN_PASSWORD` | Mật khẩu đăng nhập admin |
 | `ADMIN_SECRET` | Secret ký session cookie (chuỗi random dài) |
 
@@ -75,6 +79,7 @@ src/app/api/       # API CRUD + auth
 1. Cập nhật `NEXT_PUBLIC_SITE_URL=https://your-domain.vn` trong env
 2. Trỏ DNS A/CNAME tới Vercel hoặc VPS
 3. Bật HTTPS
+4. Làm theo checklist **[GO-LIVE.md](./GO-LIVE.md)** (Analytics, Search Console, sitemap)
 
 ## Liên kết nhóm
 

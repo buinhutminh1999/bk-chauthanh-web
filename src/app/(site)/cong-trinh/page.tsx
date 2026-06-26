@@ -3,16 +3,18 @@ import { Container } from "@/components/ui/Container";
 import { ProjectCard } from "@/components/projects/ProjectCard";
 import { CTABanner } from "@/components/shared/CTABanner";
 import { EmptyState } from "@/components/shared/EmptyState";
+import { JsonLd } from "@/components/shared/JsonLd";
 import { getSiteConfig, getProjects } from "@/lib/content";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 
 export async function generateMetadata() {
   const site = await getSiteConfig();
   return buildMetadata({
     title: `Công trình tiêu biểu — ${site.shortName}`,
     description:
-      "Hình ảnh và thông tin các dự án cung cấp cống, cọc, gạch, bê tông nhựa và UHPC từ nhà máy Bách Khoa Châu Thành.",
+      `Hình ảnh và thông tin các dự án cung cấp cống, cọc, gạch, bê tông nhựa và UHPC từ nhà máy ${site.shortName}.`,
     path: "/cong-trinh",
+    siteName: site.shortName,
   });
 }
 
@@ -23,8 +25,17 @@ export default async function ProjectsPage() {
 
   return (
     <>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Trang chủ", path: "/" },
+          { name: "Công trình", path: "/cong-trinh" },
+        ])}
+      />
       <PageHeader
-        breadcrumb="Công trình"
+        breadcrumbs={[
+          { label: "Trang chủ", href: "/" },
+          { label: "Công trình" },
+        ]}
         title="Công trình tiêu biểu"
         subtitle="Một số dự án đã cung cấp vật liệu xây dựng từ nhà máy Châu Thành"
       />

@@ -120,6 +120,6 @@ export function telLink(phone: string) {
 }
 
 const MAP_ADDRESS =
-  "Ấp Bình Phú 2, Xã Bình Hòa, Huyện Châu Thành, An Giang";
+  "Ấp Bình Phú 2, xã Bình Hòa, An Giang";
 
 export const MAP_EMBED_URL = `https://maps.google.com/maps?q=${encodeURIComponent(MAP_ADDRESS)}&t=&z=14&ie=UTF8&iwloc=&output=embed`;

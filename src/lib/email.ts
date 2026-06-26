@@ -29,7 +29,7 @@ export async function sendContactEmail(data: ContactFormInput) {
 
   const to =
     process.env.CONTACT_TO_EMAIL ?? process.env.GMAIL_SMTP_USER ?? smtp.user;
-  const siteName = "Bách Khoa Châu Thành";
+  const siteName = "Bê tông Châu Thành";
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
   const transporter = nodemailer.createTransport({

@@ -8,12 +8,15 @@
     "start": "node node_modules/next/dist/bin/next start",
     "lint": "eslint",
     "normalize:products": "node --experimental-strip-types scripts/normalize-products.ts",
-    "patch:products": "node --experimental-strip-types scripts/patch-products-meta.ts"
+    "patch:products": "node --experimental-strip-types scripts/patch-products-meta.ts",
+    "optimize:hero": "node scripts/optimize-hero.mjs",
+    "optimize:og": "node scripts/optimize-og.mjs",
+    "generate:favicon": "node scripts/generate-favicon.mjs",
+    "go-live:check": "node scripts/go-live-check.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",
     "date-fns": "^4.4.0",
-    "framer-motion": "^12.40.0",
     "jose": "^6.2.3",
     "lucide-react": "^1.21.0",
     "next": "16.2.9",
@@ -33,6 +36,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.9",
+    "sharp": "^0.35.2",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

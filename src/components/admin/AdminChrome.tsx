@@ -45,9 +45,9 @@ function NavLinks({
             href={item.href}
             onClick={onNavigate}
             className={cn(
-              "flex min-h-11 items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors",
+              "flex min-h-11 items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium transition-colors",
               active
-                ? "bg-brand-800 text-white"
+                ? "bg-brand-700 text-white shadow-sm"
                 : "text-brand-100 hover:bg-brand-800 hover:text-white",
             )}
           >
@@ -60,7 +60,7 @@ function NavLinks({
         href="/"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex min-h-11 items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-brand-100 hover:bg-brand-800 hover:text-white transition-colors"
+        className="flex min-h-11 items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-brand-100 hover:bg-brand-800 hover:text-white transition-colors"
       >
         <ExternalLink className="h-4 w-4 shrink-0" />
         Xem website
@@ -74,14 +74,14 @@ export function AdminChrome({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="min-h-screen bg-surface flex flex-col lg:flex-row">
-      <div className="lg:hidden sticky top-0 z-40 flex items-center justify-between gap-3 border-b border-brand-200 bg-brand-900 px-4 py-3 text-white">
+      <div className="lg:hidden sticky top-0 z-40 flex items-center justify-between gap-3 border-b border-brand-700/40 bg-brand-900 px-4 py-3 text-white">
         <div>
           <p className="font-display text-base text-white">Admin</p>
-          <p className="text-xs text-brand-300">Bách Khoa Châu Thành</p>
+          <p className="text-xs text-brand-300 font-mono">bk-chauthanh</p>
         </div>
         <button
           type="button"
-          className="touch-target flex items-center justify-center rounded-lg hover:bg-brand-800"
+          className="touch-target flex items-center justify-center rounded-md hover:bg-brand-800"
           onClick={() => setMobileOpen(true)}
           aria-label="Mở menu quản trị"
         >
@@ -93,16 +93,16 @@ export function AdminChrome({ children }: { children: React.ReactNode }) {
         <div className="fixed inset-0 z-50 lg:hidden">
           <button
             type="button"
-            className="absolute inset-0 bg-brand-900/60 backdrop-blur-sm"
+            className="absolute inset-0 bg-brand-900/65 backdrop-blur-sm"
             aria-label="Đóng menu"
             onClick={() => setMobileOpen(false)}
           />
-          <aside className="absolute right-0 top-0 bottom-0 w-[min(18rem,85vw)] bg-brand-900 text-brand-100 flex flex-col shadow-2xl">
+          <aside className="absolute right-0 top-0 bottom-0 w-[min(18rem,85vw)] bg-brand-900 text-brand-100 flex flex-col shadow-elevated modal-scroll">
             <div className="flex items-center justify-between border-b border-brand-700 p-4">
               <p className="font-display text-lg text-white">Menu</p>
               <button
                 type="button"
-                className="touch-target flex items-center justify-center rounded-lg hover:bg-brand-800"
+                className="touch-target flex items-center justify-center rounded-md hover:bg-brand-800"
                 onClick={() => setMobileOpen(false)}
                 aria-label="Đóng menu"
               >
@@ -115,7 +115,7 @@ export function AdminChrome({ children }: { children: React.ReactNode }) {
             <form action="/api/auth/logout" method="POST" className="border-t border-brand-700 p-4">
               <button
                 type="submit"
-                className="flex w-full min-h-11 items-center gap-3 px-3 py-2.5 rounded-lg text-sm hover:bg-brand-800 transition-colors"
+                className="flex w-full min-h-11 items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium hover:bg-brand-800 transition-colors"
               >
                 <LogOut className="h-4 w-4" />
                 Đăng xuất
@@ -125,18 +125,19 @@ export function AdminChrome({ children }: { children: React.ReactNode }) {
         </div>
       )}
 
-      <aside className="hidden lg:flex w-64 shrink-0 bg-brand-900 text-brand-100 flex-col">
-        <div className="p-6 border-b border-brand-700">
+      <aside className="hidden lg:flex w-64 shrink-0 bg-brand-900 text-brand-100 flex-col border-r border-brand-700/40">
+        <div className="h-0.5 bg-gradient-to-r from-brand-600 via-accent to-brand-600" />
+        <div className="p-6 border-b border-brand-700/60">
           <p className="font-display text-lg text-white">Admin</p>
-          <p className="text-xs text-brand-300 mt-1">Bách Khoa Châu Thành</p>
+          <p className="text-xs text-brand-300 mt-1 font-mono">Bê tông Châu Thành</p>
         </div>
         <div className="flex-1 p-4 overflow-y-auto">
           <NavLinks />
         </div>
-        <form action="/api/auth/logout" method="POST" className="p-4 border-t border-brand-700">
+        <form action="/api/auth/logout" method="POST" className="p-4 border-t border-brand-700/60">
           <button
             type="submit"
-            className="flex w-full min-h-11 items-center gap-3 px-3 py-2.5 rounded-lg text-sm hover:bg-brand-800 transition-colors"
+            className="flex w-full min-h-11 items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium hover:bg-brand-800 transition-colors"
           >
             <LogOut className="h-4 w-4" />
             Đăng xuất
@@ -144,7 +145,7 @@ export function AdminChrome({ children }: { children: React.ReactNode }) {
         </form>
       </aside>
 
-      <main className="flex-1 min-w-0">{children}</main>
+      <main className="flex-1 min-w-0 blueprint-bg">{children}</main>
     </div>
   );
 }

@@ -1,10 +1,11 @@
 import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import type { SiteBrand } from "@/types/content";
 
 const DEFAULT_BRAND: SiteBrand = {
   prefix: "CÔNG TY CỔ PHẦN SẢN XUẤT",
-  name: "BÁCH KHOA",
+  name: "BÊ TÔNG",
   locality: "CHÂU THÀNH",
   slogan: "VẬT LIỆU XÂY DỰNG — UY TÍN TỪ SẢN XUẤT",
 };
@@ -36,14 +37,13 @@ export function BrandMark({
   const content = (
     <>
       <span className="flex h-11 w-11 lg:h-[3.5rem] lg:w-[3.5rem] shrink-0 items-center justify-center rounded-full bg-white overflow-hidden shadow-sm ring-1 ring-white/30">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/images/logo-bach-khoa-icon.png?v=6"
+        <Image
+          src="/images/logo-bach-khoa-icon.png"
           alt={companyName}
-          width={810}
-          height={810}
+          width={48}
+          height={48}
           className="h-[90%] w-[90%] object-contain"
-          decoding="async"
+          sizes="48px"
         />
       </span>
       <div

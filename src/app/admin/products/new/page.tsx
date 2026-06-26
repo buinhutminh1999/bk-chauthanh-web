@@ -7,7 +7,7 @@ export default async function NewProductPage() {
   if (!authed) return <LoginForm />;
 
   return (
-    <div className="p-4 sm:p-8 lg:p-10">
+    <div className="admin-page">
       <h1 className="font-display text-2xl text-brand-900">Thêm sản phẩm</h1>
       <div className="mt-8">
         <ProductForm mode="create" />

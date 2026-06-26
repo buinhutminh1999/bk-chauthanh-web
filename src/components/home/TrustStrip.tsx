@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { Award, Factory, Truck, Headphones, X } from "lucide-react";
-import { Container } from "@/components/ui/Container";
+import { Section } from "@/components/ui/Section";
+import { Card } from "@/components/ui/Card";
 import { SalesContactsList } from "@/components/shared/SalesContactsList";
 import { TRUST_ITEMS } from "@/lib/site-constants";
 import { cn } from "@/lib/utils";
@@ -29,35 +30,36 @@ export function TrustStrip() {
 
   return (
     <>
-      <section className="border-y border-brand-100 bg-white">
-        <Container className="py-8 lg:py-10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-            {TRUST_ITEMS.map((item, i) => {
-              const Icon = ICONS[i];
-              return (
-                <button
-                  key={item.id}
-                  type="button"
-                  onClick={() => setActive(item)}
-                  className={cn(
-                    "flex gap-4 items-start text-left rounded-xl p-3 -m-3",
-                    "transition-colors hover:bg-brand-50/80 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/40",
-                  )}
-                >
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-700 ring-1 ring-brand-100">
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-brand-900 text-sm">{item.title}</p>
-                    <p className="mt-1 text-xs text-ink-muted leading-relaxed">{item.desc}</p>
-                    <p className="mt-2 text-xs font-medium text-brand-600">Xem chi tiết →</p>
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-        </Container>
-      </section>
+      <Section size="none" className="border-y border-brand-100 bg-white py-8 lg:py-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+          {TRUST_ITEMS.map((item, i) => {
+            const Icon = ICONS[i];
+            return (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => setActive(item)}
+                className={cn(
+                  "flex gap-4 items-start text-left rounded-lg p-4 w-full",
+                  "transition-[background-color,border-color] hover:bg-brand-50/80 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/40",
+                  "border border-transparent hover:border-brand-100",
+                )}
+              >
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-brand-700 text-accent ring-1 ring-brand-600/30">
+                  <Icon className="h-5 w-5" />
+                </div>
+                <div>
+                  <p className="font-semibold text-brand-900 text-sm">{item.title}</p>
+                  <p className="mt-1 text-xs text-ink-muted leading-relaxed">{item.desc}</p>
+                  <p className="mt-2 text-xs font-medium text-brand-600">
+                    Xem chi tiết →
+                  </p>
+                </div>
+              </button>
+            );
+          })}
+        </div>
+      </Section>
 
       {active && (
         <div
@@ -68,24 +70,22 @@ export function TrustStrip() {
         >
           <button
             type="button"
-            className="absolute inset-0 bg-brand-900/60 backdrop-blur-sm"
+            className="absolute inset-0 bg-brand-900/65 backdrop-blur-sm"
             aria-label="Đóng"
             onClick={() => setActive(null)}
           />
-          <div className="relative w-full max-w-lg rounded-2xl bg-white shadow-2xl ring-1 ring-brand-100 animate-fade-up max-h-[85vh] overflow-y-auto">
-            <div className="sticky top-0 flex items-start justify-between gap-4 border-b border-brand-100 bg-white px-6 py-5 rounded-t-2xl">
+          <Card padding="none" className="relative w-full max-w-lg shadow-elevated animate-fade-up max-h-[85vh] overflow-y-auto modal-scroll">
+            <div className="sticky top-0 flex items-start justify-between gap-4 border-b border-brand-100 bg-white px-6 py-5">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-brand-600">
-                  Thông tin
-                </p>
-                <h2 id="trust-dialog-title" className="mt-1 font-display text-2xl text-brand-900">
+                <p className="section-eyebrow mb-2">Thông tin</p>
+                <h2 id="trust-dialog-title" className="font-display text-2xl text-brand-900">
                   {active.title}
                 </h2>
               </div>
               <button
                 type="button"
                 onClick={() => setActive(null)}
-                className="touch-target shrink-0 flex items-center justify-center rounded-lg text-ink-muted hover:bg-brand-50 hover:text-brand-800"
+                className="touch-target shrink-0 flex items-center justify-center rounded-md text-ink-muted hover:bg-brand-50 hover:text-brand-800"
                 aria-label="Đóng"
               >
                 <X className="h-5 w-5" />
@@ -95,11 +95,8 @@ export function TrustStrip() {
               <p className="text-sm text-ink-muted leading-relaxed">{active.details.summary}</p>
               <ul className="mt-5 space-y-2.5">
                 {active.details.points.map((point) => (
-                  <li
-                    key={point}
-                    className="flex gap-2.5 text-sm text-ink leading-relaxed"
-                  >
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-600" />
+                  <li key={point} className="flex gap-3 text-sm text-ink leading-relaxed">
+                    <span className="mt-2 h-1 w-4 shrink-0 bg-accent rounded-sm" />
                     <span>{point}</span>
                   </li>
                 ))}
@@ -114,7 +111,7 @@ export function TrustStrip() {
                 />
               )}
             </div>
-          </div>
+          </Card>
         </div>
       )}
     </>

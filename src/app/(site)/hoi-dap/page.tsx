@@ -6,29 +6,38 @@ import { CTABanner } from "@/components/shared/CTABanner";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { Button } from "@/components/ui/Button";
 import { getSiteConfig, getFaqs } from "@/lib/content";
-import { buildMetadata, faqJsonLd } from "@/lib/seo";
+import { buildMetadata, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo";
 
 export async function generateMetadata() {
   const site = await getSiteConfig();
   return buildMetadata({
     title: `Hỏi đáp — ${site.shortName}`,
     description:
-      "Câu hỏi thường gặp về sản phẩm, giao hàng, tiêu chuẩn TCVN và liên hệ Bách Khoa Châu Thành.",
+      `Câu hỏi thường gặp về sản phẩm, giao hàng, tiêu chuẩn TCVN và liên hệ ${site.shortName}.`,
     path: "/hoi-dap",
+    siteName: site.shortName,
   });
 }
 
 export default async function FaqPage() {
-  const site = await getSiteConfig();
-  const faqs = await getFaqs();
+  const [site, faqs] = await Promise.all([getSiteConfig(), getFaqs()]);
   const faqData = faqJsonLd(faqs.map((f) => ({ question: f.question, answer: f.answer })));
 
   return (
     <>
       {faqData && <JsonLd data={faqData} />}
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Trang chủ", path: "/" },
+          { name: "Hỏi đáp", path: "/hoi-dap" },
+        ])}
+      />
 
       <PageHeader
-        breadcrumb="Hỏi đáp"
+        breadcrumbs={[
+          { label: "Trang chủ", href: "/" },
+          { label: "Hỏi đáp" },
+        ]}
         title="Câu hỏi thường gặp"
         subtitle="Thông tin về sản phẩm, giao hàng và liên hệ nhà máy"
       />

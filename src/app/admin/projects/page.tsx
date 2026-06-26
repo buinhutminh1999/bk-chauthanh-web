@@ -12,7 +12,7 @@ export default async function AdminProjectsPage() {
   const projects = await getProjects(false);
 
   return (
-    <div className="p-4 sm:p-8 lg:p-10">
+    <div className="admin-page">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h1 className="font-display text-2xl text-brand-900">Công trình</h1>
         <Link

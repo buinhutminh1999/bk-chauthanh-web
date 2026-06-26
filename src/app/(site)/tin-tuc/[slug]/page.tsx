@@ -4,9 +4,10 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, Calendar } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { MarkdownContent } from "@/components/blog/MarkdownContent";
+import { ShareButtons } from "@/components/blog/ShareButtons";
 import { JsonLd } from "@/components/shared/JsonLd";
-import { getPostBySlug, getPosts } from "@/lib/content";
-import { buildMetadata, articleJsonLd } from "@/lib/seo";
+import { getPostBySlug, getPosts, getSiteConfig } from "@/lib/content";
+import { buildMetadata, articleJsonLd, breadcrumbJsonLd, getSiteUrl } from "@/lib/seo";
 import { formatDate } from "@/lib/utils";
 
 export async function generateStaticParams() {
@@ -22,12 +23,14 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = await getPostBySlug(slug);
   if (!post) return {};
+  const site = await getSiteConfig();
   return buildMetadata({
-    title: `${post.title} — Bách Khoa Châu Thành`,
-    description: post.excerpt,
+    title: post.seoTitle ?? `${post.title} — ${site.shortName}`,
+    description: post.seoDescription ?? post.excerpt,
     path: `/tin-tuc/${post.slug}`,
     image: post.coverImage,
     type: "article",
+    siteName: site.shortName,
   });
 }
 
@@ -39,10 +42,19 @@ export default async function PostDetailPage({
   const { slug } = await params;
   const post = await getPostBySlug(slug);
   if (!post) notFound();
+  const site = await getSiteConfig();
+  const shareUrl = `${getSiteUrl()}/tin-tuc/${post.slug}`;
 
   return (
     <>
-      <JsonLd data={articleJsonLd(post)} />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Trang chủ", path: "/" },
+          { name: "Tin tức", path: "/tin-tuc" },
+          { name: post.title, path: `/tin-tuc/${post.slug}` },
+        ])}
+      />
+      <JsonLd data={articleJsonLd({ ...post, siteName: site.shortName })} />
 
       <article>
         {post.coverImage && (
@@ -87,6 +99,8 @@ export default async function PostDetailPage({
             <Calendar className="h-4 w-4" />
             {formatDate(post.createdAt, "dd/MM/yyyy")}
           </div>
+
+          <ShareButtons url={shareUrl} title={post.title} className="mt-6 pt-6 border-t border-brand-100" />
 
           <div className="mt-10">
             <MarkdownContent content={post.content} />

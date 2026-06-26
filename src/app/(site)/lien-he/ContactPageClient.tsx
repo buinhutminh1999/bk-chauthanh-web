@@ -44,19 +44,25 @@ export function ContactPageClient({ site }: { site: SiteInfo }) {
     e.preventDefault();
     const form = e.currentTarget;
     const fd = new FormData(form);
-    await submit({
-      name: String(fd.get("name") ?? ""),
-      phone: String(fd.get("phone") ?? ""),
-      email: String(fd.get("email") ?? ""),
-      product: String(fd.get("product") ?? ""),
-      message: String(fd.get("message") ?? ""),
-    });
+    await submit(
+      {
+        name: String(fd.get("name") ?? ""),
+        phone: String(fd.get("phone") ?? ""),
+        email: String(fd.get("email") ?? ""),
+        product: String(fd.get("product") ?? ""),
+        message: String(fd.get("message") ?? ""),
+      },
+      { formId: "contact_page" },
+    );
   }
 
   return (
     <>
       <PageHeader
-        breadcrumb="Liên hệ"
+        breadcrumbs={[
+          { label: "Trang chủ", href: "/" },
+          { label: "Liên hệ" },
+        ]}
         title="Liên hệ với chúng tôi"
         subtitle="Tư vấn sản phẩm, báo giá và hỗ trợ kỹ thuật cho dự án của bạn"
       />
@@ -165,7 +171,7 @@ export function ContactPageClient({ site }: { site: SiteInfo }) {
                 <h2 className="font-display text-xl text-brand-900 mb-6">Gửi yêu cầu tư vấn</h2>
 
                 {sent ? (
-                  <div className="py-12 text-center">
+                  <div className="py-12 text-center" role="status" aria-live="polite">
                     <p className="text-brand-700 font-medium">Cảm ơn bạn đã liên hệ!</p>
                     <p className="mt-2 text-sm text-ink-muted">
                       Chúng tôi sẽ phản hồi trong thời gian sớm nhất. Hoặc gọi trực tiếp:{" "}
@@ -173,42 +179,56 @@ export function ContactPageClient({ site }: { site: SiteInfo }) {
                     </p>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-5">
-                    {error && <p className="form-error">{error}</p>}
+                  <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+                    <div aria-live="polite" aria-atomic="true">
+                      {error && <p className="form-error">{error}</p>}
+                    </div>
                     <div className="grid sm:grid-cols-2 gap-5">
-                      <label className="block">
-                        <span className="text-sm font-medium text-ink">Họ và tên *</span>
+                      <label htmlFor="contact-name" className="block">
+                        <span className="form-label">Họ và tên *</span>
                         <input
+                          id="contact-name"
                           required
                           name="name"
                           type="text"
+                          autoComplete="name"
                           className="form-input"
                         />
                       </label>
-                      <label className="block">
-                        <span className="text-sm font-medium text-ink">Điện thoại *</span>
+                      <label htmlFor="contact-phone" className="block">
+                        <span className="form-label">Điện thoại *</span>
                         <input
+                          id="contact-phone"
                           required
                           name="phone"
                           type="tel"
+                          inputMode="tel"
+                          autoComplete="tel"
+                          spellCheck={false}
                           className="form-input"
                         />
                       </label>
                     </div>
-                    <label className="block">
-                      <span className="text-sm font-medium text-ink">Email</span>
+                    <label htmlFor="contact-email" className="block">
+                      <span className="form-label">Email</span>
                       <input
+                        id="contact-email"
                         name="email"
                         type="email"
+                        inputMode="email"
+                        autoComplete="email"
+                        spellCheck={false}
                         className="form-input"
                       />
                     </label>
-                    <label className="block">
-                      <span className="text-sm font-medium text-ink">Sản phẩm quan tâm</span>
+                    <label htmlFor="contact-product" className="block">
+                      <span className="form-label">Sản phẩm quan tâm</span>
                       <select
+                        id="contact-product"
                         name="product"
                         value={productPreset}
                         onChange={(e) => setProductPreset(e.target.value)}
+                        autoComplete="off"
                         className="form-input bg-white"
                       >
                         {PRODUCT_OPTIONS.map((opt) => (
@@ -219,19 +239,21 @@ export function ContactPageClient({ site }: { site: SiteInfo }) {
                         )}
                       </select>
                     </label>
-                    <label className="block">
-                      <span className="text-sm font-medium text-ink">Nội dung *</span>
+                    <label htmlFor="contact-message" className="block">
+                      <span className="form-label">Nội dung *</span>
                       <textarea
+                        id="contact-message"
                         required
                         name="message"
                         rows={4}
+                        autoComplete="off"
                         className="form-input resize-y"
-                        placeholder="Mô tả dự án, quy cách cần tư vấn..."
+                        placeholder="Mô tả dự án, quy cách cần tư vấn…"
                       />
                     </label>
-                    <Button type="submit" size="lg" disabled={loading}>
-                      <Send className="h-4 w-4" />
-                      {loading ? "Đang gửi..." : "Gửi yêu cầu"}
+                    <Button type="submit" size="lg" disabled={loading} aria-busy={loading}>
+                      <Send className="h-4 w-4" aria-hidden="true" />
+                      {loading ? "Đang gửi…" : "Gửi yêu cầu"}
                     </Button>
                   </form>
                 )}
@@ -241,7 +263,7 @@ export function ContactPageClient({ site }: { site: SiteInfo }) {
 
           <div className="mt-16 max-w-full overflow-hidden rounded-2xl ring-1 ring-brand-100 shadow-lg">
             <iframe
-              title="Bản đồ nhà máy Bách Khoa Châu Thành"
+              title="Bản đồ nhà máy Bê tông Châu Thành"
               src={embedSrc}
               className="w-full max-w-full h-[360px] sm:h-[400px] lg:h-[480px] border-0"
               loading="lazy"

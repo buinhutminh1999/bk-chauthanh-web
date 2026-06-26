@@ -35,7 +35,7 @@ export function SalesContactsList({
   if (layout === "footer") {
     return (
       <div className={cn("min-w-0", className)}>
-        <p className="text-xs font-semibold uppercase tracking-widest text-accent">
+        <p className="section-eyebrow section-eyebrow-light text-[11px]">
           {title}
         </p>
         <ul className="mt-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -137,7 +137,7 @@ export function SalesContactsList({
                   "inline-flex min-h-11 items-center gap-1 rounded-lg px-3 py-2 text-xs font-medium transition-colors",
                   isDark
                     ? "bg-zalo/20 text-zalo-light hover:bg-zalo/30"
-                    : "bg-zalo/10 text-zalo hover:bg-zalo/15",
+                    : "bg-brand-50 text-zalo-hover hover:bg-brand-100 font-semibold",
                 )}
               >
                 <MessageCircle className="h-3.5 w-3.5 shrink-0" />

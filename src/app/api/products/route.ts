@@ -21,6 +21,8 @@ const productSchema = z.object({
   featured: z.boolean(),
   published: z.boolean(),
   specs: z.record(z.string(), z.string()).optional(),
+  seoTitle: z.string().optional(),
+  seoDescription: z.string().optional(),
 });
 
 async function requireAuth() {

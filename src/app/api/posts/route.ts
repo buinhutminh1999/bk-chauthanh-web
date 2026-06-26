@@ -12,6 +12,8 @@ const postSchema = z.object({
   coverImage: z.string().optional(),
   tags: z.array(z.string()),
   published: z.boolean(),
+  seoTitle: z.string().optional(),
+  seoDescription: z.string().optional(),
 });
 
 function revalidatePostPaths(slug?: string) {

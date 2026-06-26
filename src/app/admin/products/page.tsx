@@ -12,7 +12,7 @@ export default async function AdminProductsPage() {
   const products = await getProducts(false);
 
   return (
-    <div className="p-4 sm:p-8 lg:p-10">
+    <div className="admin-page">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h1 className="font-display text-2xl text-brand-900">Sản phẩm</h1>
         <Link
@@ -25,7 +25,7 @@ export default async function AdminProductsPage() {
 
       <div className="mt-6 space-y-3 md:hidden">
         {products.map((p) => (
-          <div key={p.id} className="rounded-xl border border-brand-100 bg-white p-4">
+          <div key={p.id} className="admin-panel p-4">
             <div className="flex items-start justify-between gap-3">
               <div className="min-w-0">
                 <p className="font-medium text-brand-900 line-clamp-2">{p.name}</p>
@@ -44,7 +44,7 @@ export default async function AdminProductsPage() {
         ))}
       </div>
 
-      <div className="mt-8 hidden md:block overflow-x-auto rounded-xl border border-brand-100 bg-white">
+      <div className="mt-8 hidden md:block admin-table-wrap admin-panel">
         <table className="w-full min-w-[640px] text-sm">
           <thead className="bg-brand-50 text-left">
             <tr>

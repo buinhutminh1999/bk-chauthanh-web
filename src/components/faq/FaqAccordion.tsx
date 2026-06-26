@@ -22,7 +22,7 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
         return (
           <div
             key={item.id}
-            className="rounded-xl border border-brand-100 bg-white overflow-hidden"
+            className="card-base overflow-hidden"
           >
             <button
               id={buttonId}
@@ -30,9 +30,9 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
               aria-expanded={open}
               aria-controls={panelId}
               onClick={() => setOpenId(open ? null : item.id)}
-              className="flex min-h-11 w-full items-center justify-between gap-4 px-5 py-4 text-left hover:bg-brand-50/50 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-500"
+              className="flex min-h-11 w-full items-center justify-between gap-4 px-5 py-4 text-left hover:bg-brand-50/60 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-brand-500"
             >
-              <span className="min-w-0 flex-1 font-medium text-brand-900">{item.question}</span>
+              <span className="min-w-0 flex-1 font-semibold text-brand-900">{item.question}</span>
               <ChevronDown
                 className={cn(
                   "h-5 w-5 shrink-0 text-brand-600 transition-transform duration-200",
@@ -51,7 +51,7 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
               )}
             >
               <div className="overflow-hidden">
-                <div className="px-5 pb-4 text-sm text-ink-muted leading-relaxed border-t border-brand-50 pt-3">
+                <div className="px-5 pb-5 text-sm text-ink-muted leading-relaxed border-t border-brand-50 pt-4">
                   {item.answer}
                 </div>
               </div>

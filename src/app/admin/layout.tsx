@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
 import { verifySession } from "@/lib/auth";
 import { AdminChrome } from "@/components/admin/AdminChrome";
+
+export const metadata: Metadata = {
+  robots: { index: false, follow: false },
+  title: "Quản trị",
+};
 
 export default async function AdminLayout({
   children,

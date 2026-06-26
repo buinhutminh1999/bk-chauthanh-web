@@ -1,5 +1,7 @@
 import { MapPin, Phone, Mail } from "lucide-react";
-import { Container } from "@/components/ui/Container";
+import { Section } from "@/components/ui/Section";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+import { Card } from "@/components/ui/Card";
 import { telLink } from "@/lib/site-constants";
 import { SalesContactsList } from "@/components/shared/SalesContactsList";
 import type { SalesContact } from "@/types/content";
@@ -29,28 +31,29 @@ export function ContactDetails({
   const mapQuery = encodeURIComponent(address);
 
   return (
-    <div
-      className={cn(
-        "flex h-full flex-col rounded-2xl border border-brand-100 bg-white p-6 shadow-sm",
-        className,
-      )}
-    >
-      <ul className="space-y-4">
+    <Card padding="md" className={cn("flex h-full flex-col", className)}>
+      <ul className="space-y-5">
         <li className="flex gap-3">
-          <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-brand-600" />
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-brand-50 ring-1 ring-brand-100">
+            <MapPin className="h-5 w-5 text-brand-600" />
+          </div>
           <div className="min-w-0">
-            <p className="font-medium text-ink">{companyName}</p>
+            <p className="font-semibold text-ink">{companyName}</p>
             <p className="mt-1 text-sm leading-relaxed text-ink-muted">{address}</p>
           </div>
         </li>
         <li className="flex items-center gap-3">
-          <Phone className="h-5 w-5 shrink-0 text-brand-600" />
-          <a href={telLink(phone)} className="font-medium text-ink hover:text-brand-700">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-brand-50 ring-1 ring-brand-100">
+            <Phone className="h-5 w-5 text-brand-600" />
+          </div>
+          <a href={telLink(phone)} className="font-semibold text-ink hover:text-brand-700">
             {phone}
           </a>
         </li>
         <li className="flex items-center gap-3 min-w-0">
-          <Mail className="h-5 w-5 shrink-0 text-brand-600" />
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-brand-50 ring-1 ring-brand-100">
+            <Mail className="h-5 w-5 text-brand-600" />
+          </div>
           <a href={`mailto:${email}`} className="break-all text-ink hover:text-brand-700">
             {email}
           </a>
@@ -61,7 +64,7 @@ export function ContactDetails({
         href={`https://www.google.com/maps/search/?api=1&query=${mapQuery}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-5 inline-flex text-sm font-medium text-brand-700 hover:text-brand-900"
+        className="mt-6 inline-flex text-sm font-semibold text-brand-700 hover:text-brand-900"
       >
         Mở Google Maps →
       </a>
@@ -71,7 +74,7 @@ export function ContactDetails({
           <SalesContactsList contacts={salesContacts} embedded />
         </div>
       )}
-    </div>
+    </Card>
   );
 }
 
@@ -85,12 +88,12 @@ export function ContactMap({
   return (
     <div
       className={cn(
-        "h-full min-h-[280px] max-w-full overflow-hidden rounded-2xl shadow-lg ring-1 ring-brand-100 aspect-video sm:aspect-auto sm:min-h-[320px] lg:min-h-0",
+        "h-full min-h-[280px] max-w-full overflow-hidden rounded-lg shadow-elevated ring-1 ring-brand-200 aspect-video sm:aspect-auto sm:min-h-[320px] lg:min-h-0",
         className,
       )}
     >
       <iframe
-        title="Bản đồ nhà máy Bách Khoa Châu Thành"
+        title="Bản đồ nhà máy Bê tông Châu Thành"
         src={mapEmbedSrc(address)}
         className="h-full min-h-[280px] sm:min-h-[320px] w-full max-w-full border-0 lg:min-h-full"
         loading="lazy"
@@ -109,29 +112,26 @@ export function MapContactSection({
   salesContacts = [],
 }: ContactFields) {
   return (
-    <section className="border-t border-brand-100 bg-white py-16 lg:py-20">
-      <Container>
-        <div className="max-w-2xl mb-10">
-          <p className="text-sm font-semibold uppercase tracking-widest text-brand-600">
-            Liên hệ
-          </p>
-          <h2 className="mt-2 font-display text-3xl text-brand-900">Đến nhà máy & liên hệ</h2>
+    <Section className="bg-white border-t border-brand-100">
+      <SectionHeader
+        eyebrow="Liên hệ"
+        title="Đến nhà máy & liên hệ"
+        className="mb-10"
+      />
+      <div className="grid items-stretch gap-6 lg:grid-cols-12 lg:gap-8 lg:min-h-[480px]">
+        <div className="lg:col-span-5">
+          <ContactDetails
+            address={address}
+            phone={phone}
+            email={email}
+            companyName={companyName}
+            salesContacts={salesContacts}
+          />
         </div>
-        <div className="grid items-stretch gap-6 lg:grid-cols-12 lg:gap-8 lg:min-h-[480px]">
-          <div className="lg:col-span-5">
-            <ContactDetails
-              address={address}
-              phone={phone}
-              email={email}
-              companyName={companyName}
-              salesContacts={salesContacts}
-            />
-          </div>
-          <div className="lg:col-span-7">
-            <ContactMap address={address} className="h-full" />
-          </div>
+        <div className="lg:col-span-7">
+          <ContactMap address={address} className="h-full" />
         </div>
-      </Container>
-    </section>
+      </div>
+    </Section>
   );
 }

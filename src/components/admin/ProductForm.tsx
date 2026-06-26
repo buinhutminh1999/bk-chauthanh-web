@@ -35,6 +35,8 @@ export function ProductForm({ initial, mode }: ProductFormProps) {
       ? Object.entries(initial.specs).map(([k, v]) => `${k}: ${v}`).join("\n")
       : "",
   );
+  const [seoTitle, setSeoTitle] = useState(initial?.seoTitle ?? "");
+  const [seoDescription, setSeoDescription] = useState(initial?.seoDescription ?? "");
 
   function handleNameChange(v: string) {
     setName(v);
@@ -76,6 +78,8 @@ export function ProductForm({ initial, mode }: ProductFormProps) {
       featured,
       published,
       specs,
+      seoTitle: seoTitle.trim() || undefined,
+      seoDescription: seoDescription.trim() || undefined,
     };
 
     const url =
@@ -133,7 +137,7 @@ export function ProductForm({ initial, mode }: ProductFormProps) {
       <AdminFormSection title="Ảnh & tài liệu">
         <label className="block">
           <span className="text-sm font-medium">URL ảnh (mỗi dòng một ảnh)</span>
-          <textarea value={imagesText} onChange={(e) => setImagesText(e.target.value)} rows={3} className="form-input" placeholder="/images/..." />
+          <textarea value={imagesText} onChange={(e) => setImagesText(e.target.value)} rows={3} className="form-input" placeholder="/images/…" />
         </label>
         <label className="block">
           <span className="text-sm font-medium">Tài liệu (mỗi dòng: Tiêu đề|URL|loại)</span>
@@ -145,6 +149,28 @@ export function ProductForm({ initial, mode }: ProductFormProps) {
             placeholder="Bản vẽ điển hình|/files/ban-ve.pdf|drawing"
           />
           <span className="text-xs text-ink-muted mt-1 block">Loại: pdf, drawing, catalog</span>
+        </label>
+      </AdminFormSection>
+
+      <AdminFormSection title="SEO (Google)">
+        <label className="block">
+          <span className="text-sm font-medium">SEO title</span>
+          <input
+            value={seoTitle}
+            onChange={(e) => setSeoTitle(e.target.value)}
+            className="form-input"
+            placeholder="Để trống = tên sản phẩm + thương hiệu"
+          />
+        </label>
+        <label className="block">
+          <span className="text-sm font-medium">SEO description</span>
+          <textarea
+            value={seoDescription}
+            onChange={(e) => setSeoDescription(e.target.value)}
+            rows={2}
+            className="form-input"
+            placeholder="Để trống = mô tả ngắn"
+          />
         </label>
       </AdminFormSection>
 
@@ -165,7 +191,7 @@ export function ProductForm({ initial, mode }: ProductFormProps) {
       <AdminFormActions
         loading={loading}
         submitLabel="Lưu sản phẩm"
-        loadingLabel="Đang lưu..."
+        loadingLabel="Đang lưu…"
         onCancel={() => router.back()}
       />
     </form>

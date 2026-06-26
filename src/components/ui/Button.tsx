@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 type ButtonProps = {
   children: React.ReactNode;
   href?: string;
-  variant?: "primary" | "secondary" | "ghost" | "danger" | "zalo" | "accent";
+  variant?: "primary" | "secondary" | "ghost" | "danger" | "zalo" | "accent" | "outline-light";
   size?: "sm" | "md" | "lg";
   className?: string;
   onClick?: () => void;
@@ -14,20 +14,22 @@ type ButtonProps = {
 
 const variants = {
   primary:
-    "bg-brand-700 text-white hover:bg-brand-800 active:bg-brand-900 shadow-md shadow-brand-900/15",
+    "bg-brand-700 text-white hover:bg-brand-600 active:bg-brand-800 shadow-md shadow-brand-900/20 border border-brand-600/30",
   secondary:
-    "bg-white text-brand-800 border border-brand-200 hover:bg-brand-50 active:bg-brand-100",
+    "bg-white text-brand-800 border border-brand-200 hover:bg-brand-50 active:bg-brand-100 shadow-sm",
   ghost: "text-brand-700 hover:bg-brand-50 active:bg-brand-100",
   danger: "bg-danger text-white hover:bg-danger/90 active:bg-danger/80",
-  zalo: "bg-zalo text-white hover:bg-zalo-hover active:bg-zalo-hover",
+  zalo: "bg-zalo text-white hover:bg-zalo-hover active:bg-zalo-hover shadow-md shadow-zalo/20",
   accent:
-    "bg-accent text-brand-900 hover:bg-accent-light active:bg-accent-light border-0",
+    "bg-accent text-brand-900 hover:bg-accent-light active:bg-accent-dark border border-accent-dark/20 shadow-md shadow-accent/15 font-semibold",
+  "outline-light":
+    "bg-white/8 text-white border border-white/25 hover:bg-white/15 active:bg-white/20 backdrop-blur-sm",
 };
 
 const sizes = {
-  sm: "min-h-11 px-3 py-2 text-sm",
-  md: "min-h-11 px-5 py-2.5 text-sm",
-  lg: "min-h-12 px-6 py-3 text-base",
+  sm: "min-h-11 px-3.5 py-2 text-sm gap-1.5",
+  md: "min-h-11 px-5 py-2.5 text-sm gap-2",
+  lg: "min-h-12 px-6 py-3 text-base gap-2",
 };
 
 export function Button({
@@ -41,7 +43,7 @@ export function Button({
   disabled,
 }: ButtonProps) {
   const classes = cn(
-    "inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-200",
+    "inline-flex items-center justify-center rounded-md font-medium transition-[transform,background-color,border-color,color,box-shadow] duration-200",
     "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500",
     "disabled:opacity-50 disabled:pointer-events-none",
     "active:scale-[0.98]",

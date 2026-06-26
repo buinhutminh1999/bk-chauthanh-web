@@ -15,7 +15,7 @@ import {
   splitMarkdownSections,
   groupSectionsForTabs,
 } from "@/lib/markdown";
-import { buildMetadata, productJsonLd, faqJsonLd } from "@/lib/seo";
+import { buildMetadata, breadcrumbJsonLd, productJsonLd } from "@/lib/seo";
 
 export async function generateStaticParams() {
   const products = await getProducts();
@@ -30,11 +30,13 @@ export async function generateMetadata({
   const { slug } = await params;
   const product = await getProductBySlug(slug);
   if (!product) return {};
+  const site = await getSiteConfig();
   return buildMetadata({
-    title: `${product.name} — Bách Khoa Châu Thành`,
-    description: product.shortDescription,
+    title: product.seoTitle ?? `${product.name} — ${site.shortName}`,
+    description: product.seoDescription ?? product.shortDescription,
     path: `/san-pham/${product.slug}`,
     image: product.images[0],
+    siteName: site.shortName,
   });
 }
 
@@ -47,32 +49,29 @@ export default async function ProductDetailPage({
   const product = await getProductBySlug(slug);
   if (!product) notFound();
 
-  const site = await getSiteConfig();
-  const allProducts = await getProducts();
+  const [site, allProducts] = await Promise.all([getSiteConfig(), getProducts()]);
   const sections = splitMarkdownSections(product.description);
   const tabs = groupSectionsForTabs(sections);
   const hasTabs = tabs.length > 0;
 
-  const faqItems = product.specs
-    ? Object.entries(product.specs).map(([question, answer]) => ({
-        question: `${product.name} — ${question}?`,
-        answer: `${answer}`,
-      }))
-    : [];
-
-  const faqData = faqJsonLd(faqItems);
-
   return (
     <>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Trang chủ", path: "/" },
+          { name: "Sản phẩm", path: "/san-pham" },
+          { name: product.name, path: `/san-pham/${product.slug}` },
+        ])}
+      />
       <JsonLd
         data={productJsonLd({
           name: product.name,
           description: product.shortDescription,
           slug: product.slug,
           images: product.images,
+          siteName: site.shortName,
         })}
       />
-      {faqData && <JsonLd data={faqData} />}
 
       <section className="py-8 lg:py-12">
         <Container>
@@ -105,11 +104,11 @@ export default async function ProductDetailPage({
                   <h2 className="font-semibold text-brand-900 mb-4">Thông số nổi bật</h2>
                   <ul className="space-y-3">
                     {Object.entries(product.specs).map(([key, value]) => (
-                      <li key={key} className="flex gap-3 text-sm">
+                      <li key={key} className="flex gap-3 text-sm items-start">
                         <CheckCircle className="h-4 w-4 text-brand-500 shrink-0 mt-0.5" />
                         <span>
                           <strong className="text-ink">{key}:</strong>{" "}
-                          <span className="text-ink-muted">{value}</span>
+                        <span className="text-ink-muted whitespace-pre-line">{value}</span>
                         </span>
                       </li>
                     ))}

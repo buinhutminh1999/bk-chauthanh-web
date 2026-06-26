@@ -7,7 +7,7 @@ export default async function NewProjectPage() {
   if (!authed) return <LoginForm />;
 
   return (
-    <div className="p-4 sm:p-8 lg:p-10">
+    <div className="admin-page">
       <h1 className="font-display text-2xl text-brand-900 mb-8">Thêm công trình</h1>
       <ProjectForm mode="create" />
     </div>

@@ -1,53 +1,54 @@
 import Image from "next/image";
+import Link from "next/link";
 import { MapPin } from "lucide-react";
+import { Badge } from "@/components/ui/Badge";
 import type { Project } from "@/types/content";
 
 export function ProjectCard({ project }: { project: Project }) {
   const image = project.images[0];
 
   return (
-    <article className="group overflow-hidden rounded-2xl bg-white border border-brand-100 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1">
-      <div className="relative aspect-[16/10] bg-brand-100 overflow-hidden">
-        {image ? (
-          <Image
-            src={image}
-            alt={project.title}
-            fill
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
-            sizes="(max-width: 768px) 100vw, 33vw"
-          />
-        ) : (
-          <div className="flex h-full items-center justify-center text-brand-400 text-sm">
-            Không có ảnh
-          </div>
-        )}
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-900/60 to-transparent" />
-        {project.year && (
-          <span className="absolute top-3 right-3 px-2.5 py-1 text-xs font-medium bg-white/90 text-brand-800 rounded-full">
-            {project.year}
-          </span>
-        )}
-      </div>
-      <div className="p-5">
-        <div className="flex flex-wrap gap-1.5 mb-2">
-          {project.productTypes.map((t) => (
-            <span
-              key={t}
-              className="px-2 py-0.5 text-xs font-medium bg-brand-50 text-brand-700 rounded-full"
-            >
-              {t}
-            </span>
-          ))}
+    <article className="group overflow-hidden card-base card-interactive">
+      <Link href={`/cong-trinh/${project.slug}`} className="block">
+        <div className="relative aspect-[16/10] bg-brand-100 overflow-hidden">
+          {image ? (
+            <Image
+              src={image}
+              alt={project.title}
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+              sizes="(max-width: 768px) 100vw, 33vw"
+            />
+          ) : (
+            <div className="flex h-full items-center justify-center text-steel text-sm">
+              Không có ảnh
+            </div>
+          )}
+          <div className="absolute inset-0 bg-gradient-to-t from-brand-900/65 via-brand-900/15 to-transparent" />
+          {project.year && (
+            <Badge variant="dark" className="absolute top-3 right-3 backdrop-blur-sm">
+              {project.year}
+            </Badge>
+          )}
         </div>
-        <h3 className="font-display text-lg text-brand-900 line-clamp-2">{project.title}</h3>
-        <p className="mt-2 flex items-center gap-1.5 text-xs text-ink-muted">
-          <MapPin className="h-3.5 w-3.5 shrink-0" />
-          {project.location}
-        </p>
-        <p className="mt-3 text-sm text-ink-muted line-clamp-3 leading-relaxed">
-          {project.description}
-        </p>
-      </div>
+        <div className="p-5 sm:p-6">
+          <div className="flex flex-wrap gap-1.5 mb-3">
+            {project.productTypes.map((t) => (
+              <Badge key={t}>{t}</Badge>
+            ))}
+          </div>
+          <h3 className="font-display text-lg text-brand-900 line-clamp-2 group-hover:text-brand-700 transition-colors">
+            {project.title}
+          </h3>
+          <p className="mt-2 flex items-center gap-1.5 text-xs font-medium text-steel">
+            <MapPin className="h-3.5 w-3.5 shrink-0 text-brand-500" />
+            {project.location}
+          </p>
+          <p className="mt-3 text-sm text-ink-muted line-clamp-3 leading-relaxed">
+            {project.description}
+          </p>
+        </div>
+      </Link>
     </article>
   );
 }

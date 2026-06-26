@@ -50,6 +50,8 @@ export interface Product {
   documents?: ProductDocument[];
   featured: boolean;
   specs?: Record<string, string>;
+  seoTitle?: string;
+  seoDescription?: string;
   published: boolean;
   createdAt: string;
   updatedAt: string;
@@ -65,6 +67,8 @@ export interface Post {
   images?: string[];
   tags: string[];
   published: boolean;
+  seoTitle?: string;
+  seoDescription?: string;
   createdAt: string;
   updatedAt: string;
 }

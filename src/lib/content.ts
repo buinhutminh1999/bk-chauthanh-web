@@ -1,3 +1,4 @@
+import { cache } from "react";
 import { readFile, writeFile, mkdir } from "fs/promises";
 import path from "path";
 import type { Post, Product, Project, SiteConfig, FaqItem } from "@/types/content";
@@ -23,34 +24,36 @@ async function writeJson(filename: string, data: unknown) {
   );
 }
 
-export async function getSiteConfig(): Promise<SiteConfig> {
-  return readJson<SiteConfig>("site.json", {
-    companyName: "Công ty Cổ phần Sản xuất Bách Khoa Châu Thành",
-    shortName: "Bách Khoa Châu Thành",
-    tagline: "Chất lượng từ nguồn gốc — Uy tín từ sản xuất",
-    description: "",
-    phone: "",
-    email: "",
-    address: "",
-    foundedYear: 2010,
-    brand: {
-      prefix: "CÔNG TY CỔ PHẦN SẢN XUẤT",
-      name: "BÁCH KHOA",
-      locality: "CHÂU THÀNH",
-      slogan: "VẬT LIỆU XÂY DỰNG — UY TÍN TỪ SẢN XUẤT",
-    },
-    salesContacts: [],
-    stats: [],
-    social: {},
-  });
-}
+const defaultSiteConfig: SiteConfig = {
+  companyName: "Công ty Cổ phần Sản xuất Bê tông Châu Thành",
+  shortName: "Bê tông Châu Thành",
+  tagline: "Chất lượng từ nguồn gốc — Uy tín từ sản xuất",
+  description: "",
+  phone: "",
+  email: "",
+  address: "",
+  foundedYear: 2010,
+  brand: {
+    prefix: "CÔNG TY CỔ PHẦN SẢN XUẤT",
+    name: "BÊ TÔNG",
+    locality: "CHÂU THÀNH",
+    slogan: "VẬT LIỆU XÂY DỰNG — UY TÍN TỪ SẢN XUẤT",
+  },
+  salesContacts: [],
+  stats: [],
+  social: {},
+};
 
-export async function getProducts(publishedOnly = true): Promise<Product[]> {
+export const getSiteConfig = cache(async (): Promise<SiteConfig> => {
+  return readJson<SiteConfig>("site.json", defaultSiteConfig);
+});
+
+export const getProducts = cache(async (publishedOnly = true): Promise<Product[]> => {
   const products = await readJson<Product[]>("products.json", []);
   const sorted = sortProductsByPriority(products);
   if (!publishedOnly) return sorted;
   return sorted.filter((p) => p.published);
-}
+});
 
 export async function getProductBySlug(slug: string): Promise<Product | null> {
   const products = await getProducts(false);
@@ -66,14 +69,18 @@ export async function saveProducts(products: Product[]) {
   await writeJson("products.json", products);
 }
 
-export async function getPosts(publishedOnly = true): Promise<Post[]> {
-  const posts = await readJson<Post[]>("posts.json", []);
-  const sorted = [...posts].sort(
+export const getPosts = cache(async (publishedOnly = true): Promise<Post[]> => {
+  const [posts, seoPosts] = await Promise.all([
+    readJson<Post[]>("posts.json", []),
+    readJson<Post[]>("posts-seo.json", []),
+  ]);
+  const merged = [...seoPosts, ...posts];
+  const sorted = [...merged].sort(
     (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
   );
   if (!publishedOnly) return sorted;
   return sorted.filter((p) => p.published);
-}
+});
 
 export async function getPostBySlug(slug: string): Promise<Post | null> {
   const posts = await getPosts(false);
@@ -93,14 +100,14 @@ export async function saveSiteConfig(config: SiteConfig) {
   await writeJson("site.json", config);
 }
 
-export async function getProjects(publishedOnly = true): Promise<Project[]> {
+export const getProjects = cache(async (publishedOnly = true): Promise<Project[]> => {
   const projects = await readJson<Project[]>("projects.json", []);
   const sorted = [...projects].sort(
     (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
   );
   if (!publishedOnly) return sorted;
   return sorted.filter((p) => p.published);
-}
+});
 
 export async function getProjectBySlug(slug: string): Promise<Project | null> {
   const projects = await getProjects(false);
@@ -116,10 +123,10 @@ export async function saveProjects(projects: Project[]) {
   await writeJson("projects.json", projects);
 }
 
-export async function getFaqs(): Promise<FaqItem[]> {
+export const getFaqs = cache(async (): Promise<FaqItem[]> => {
   const items = await readJson<FaqItem[]>("faq.json", []);
   return [...items].sort((a, b) => a.order - b.order);
-}
+});
 
 export async function saveFaqs(items: FaqItem[]) {
   await writeJson("faq.json", items);

@@ -22,6 +22,8 @@ export function PostForm({ initial, mode }: PostFormProps) {
   const [content, setContent] = useState(initial?.content ?? "");
   const [coverImage, setCoverImage] = useState(initial?.coverImage ?? "");
   const [tagsText, setTagsText] = useState(initial?.tags.join(", ") ?? "");
+  const [seoTitle, setSeoTitle] = useState(initial?.seoTitle ?? "");
+  const [seoDescription, setSeoDescription] = useState(initial?.seoDescription ?? "");
   const [published, setPublished] = useState(initial?.published ?? true);
 
   function handleTitleChange(v: string) {
@@ -42,6 +44,8 @@ export function PostForm({ initial, mode }: PostFormProps) {
       coverImage: coverImage || undefined,
       tags: tagsText.split(",").map((t) => t.trim()).filter(Boolean),
       published,
+      seoTitle: seoTitle.trim() || undefined,
+      seoDescription: seoDescription.trim() || undefined,
     };
 
     const url = mode === "create" ? "/api/posts" : `/api/posts/${initial!.id}`;
@@ -88,6 +92,25 @@ export function PostForm({ initial, mode }: PostFormProps) {
         </label>
       </AdminFormSection>
       <AdminFormSection title="SEO & media">
+        <label className="block">
+          <span className="text-sm font-medium">SEO title (tùy chọn)</span>
+          <input
+            value={seoTitle}
+            onChange={(e) => setSeoTitle(e.target.value)}
+            className={inputClass}
+            placeholder="Để trống = dùng tiêu đề bài viết"
+          />
+        </label>
+        <label className="block">
+          <span className="text-sm font-medium">SEO description (tùy chọn)</span>
+          <textarea
+            value={seoDescription}
+            onChange={(e) => setSeoDescription(e.target.value)}
+            rows={2}
+            className={inputClass}
+            placeholder="Để trống = dùng tóm tắt"
+          />
+        </label>
         <label className="block">
           <span className="text-sm font-medium">URL ảnh bìa</span>
           <input value={coverImage} onChange={(e) => setCoverImage(e.target.value)} className={inputClass} />

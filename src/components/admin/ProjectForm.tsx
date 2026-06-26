@@ -121,7 +121,7 @@ export function ProjectForm({ initial, mode }: ProjectFormProps) {
             onChange={(e) => setImagesText(e.target.value)}
             rows={4}
             className={inputClass}
-            placeholder="/images/..."
+            placeholder="/images/…"
           />
         </label>
         <label className="block">

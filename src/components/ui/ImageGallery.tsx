@@ -104,7 +104,7 @@ export function ImageGallery({
                 aria-label={`Ảnh ${i + 1}`}
                 aria-current={i === active}
                 className={cn(
-                  "relative shrink-0 snap-start w-24 h-[4.5rem] sm:w-20 sm:h-16 rounded-lg overflow-hidden ring-2 transition-all touch-target",
+                  "relative shrink-0 snap-start w-24 h-[4.5rem] sm:w-20 sm:h-16 rounded-lg overflow-hidden ring-2 transition-[ring-color,opacity] touch-target",
                   i === active ? "ring-brand-600 scale-105" : "ring-transparent opacity-70 hover:opacity-100",
                 )}
               >
@@ -118,7 +118,7 @@ export function ImageGallery({
 
       {lightbox && (
         <div
-          className="fixed inset-0 z-[100] bg-black/92 flex items-center justify-center p-4"
+          className="fixed inset-0 z-[100] bg-black/92 flex items-center justify-center p-4 modal-scroll"
           onClick={() => setLightbox(false)}
           role="dialog"
           aria-modal="true"
@@ -126,7 +126,7 @@ export function ImageGallery({
         >
           <button
             type="button"
-            className="absolute top-4 right-4 touch-target flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20"
+            className="absolute top-4 right-4 touch-target flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/50"
             onClick={() => setLightbox(false)}
             aria-label="Đóng"
           >

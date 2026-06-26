@@ -1,12 +1,13 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Factory, Shield, Users, MapPin, ArrowRight } from "lucide-react";
 import { PageHeader } from "@/components/shared/PageHeader";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { HeroImage } from "@/components/ui/HeroImage";
 import { CTABanner } from "@/components/shared/CTABanner";
+import { JsonLd } from "@/components/shared/JsonLd";
 import { getSiteConfig, getProducts } from "@/lib/content";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { telLink } from "@/lib/site-constants";
 
 export async function generateMetadata() {
@@ -15,32 +16,34 @@ export async function generateMetadata() {
     title: `Giới thiệu — ${site.shortName}`,
     description: `Giới thiệu ${site.companyName} — nhà máy sản xuất vật liệu xây dựng tại Châu Thành, An Giang.`,
     path: "/gioi-thieu",
+    siteName: site.shortName,
   });
 }
 
 export default async function AboutPage() {
-  const site = await getSiteConfig();
-  const products = await getProducts();
+  const [site, products] = await Promise.all([getSiteConfig(), getProducts()]);
   const categories = [...new Set(products.map((p) => p.category))];
 
   return (
     <>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Trang chủ", path: "/" },
+          { name: "Giới thiệu", path: "/gioi-thieu" },
+        ])}
+      />
       <PageHeader
-        breadcrumb="Giới thiệu"
-        title={site.companyName}
+        breadcrumbs={[
+          { label: "Trang chủ", href: "/" },
+          { label: "Giới thiệu" },
+        ]}
+        title={`Giới thiệu ${site.shortName}`}
         subtitle={site.tagline}
       />
 
       <section className="relative overflow-hidden">
         <div className="absolute inset-0">
-          <Image
-            src="/images/hero-nha-may.jpg"
-            alt="Nhà máy Bách Khoa Châu Thành"
-            fill
-            className="object-cover"
-            sizes="100vw"
-            priority
-          />
+          <HeroImage alt={`Nhà máy ${site.shortName}`} />
           <div className="absolute inset-0 bg-brand-900/75" />
         </div>
         <Container className="relative py-16 lg:py-24">

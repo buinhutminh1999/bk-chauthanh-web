@@ -30,7 +30,7 @@ export function RelatedProducts({
           <Link
             key={p.id}
             href={`/san-pham/${p.slug}`}
-            className="group flex gap-4 p-4 rounded-xl border border-brand-100 bg-white hover:border-brand-200 hover:shadow-md transition-all"
+            className="group flex gap-4 p-4 rounded-xl border border-brand-100 bg-white hover:border-brand-200 hover:shadow-md transition-[border-color,box-shadow]"
           >
             <div className="relative w-24 h-24 shrink-0 rounded-lg overflow-hidden bg-brand-50">
               {p.images[0] && (

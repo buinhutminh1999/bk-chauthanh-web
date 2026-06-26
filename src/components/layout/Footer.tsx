@@ -13,11 +13,15 @@ import { SalesContactsList } from "@/components/shared/SalesContactsList";
 
 const FOOTER_LINKS = [
   { href: "/gioi-thieu", label: "Giới thiệu" },
-  { href: "/cong-trinh", label: "Công trình" },
   { href: "/san-pham", label: "Sản phẩm" },
+  { href: "/cong-trinh", label: "Công trình" },
   { href: "/tin-tuc", label: "Tin tức" },
+  { href: "/bang-gia", label: "Báo giá" },
+  { href: "/chung-nhan", label: "Chứng nhận" },
+  { href: "/tai-lieu", label: "Tài liệu" },
   { href: "/hoi-dap", label: "Hỏi đáp" },
   { href: "/lien-he", label: "Liên hệ" },
+  { href: "/chinh-sach-bao-mat", label: "Chính sách bảo mật" },
 ] as const;
 
 const FOOTER_PRODUCT_LABELS: Record<string, string> = {
@@ -36,7 +40,7 @@ function footerProductLinks() {
 
 function FooterHeading({ children }: { children: React.ReactNode }) {
   return (
-    <h3 className="text-xs font-semibold uppercase tracking-widest text-accent">
+    <h3 className="section-eyebrow section-eyebrow-light text-[11px]">
       {children}
     </h3>
   );
@@ -81,7 +85,8 @@ export function Footer({ site }: { site: SiteConfig }) {
   const products = footerProductLinks();
 
   return (
-    <footer className="w-full min-w-0 border-t border-brand-700 bg-brand-900 text-brand-100 overflow-x-hidden">
+    <footer className="w-full min-w-0 border-t border-brand-700/60 bg-brand-900 text-brand-100 overflow-x-hidden blueprint-bg-dark">
+      <div className="h-0.5 bg-gradient-to-r from-brand-600 via-accent to-brand-600" />
       <Container className="py-12 lg:py-14">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-x-8 lg:gap-y-10 items-start">
           <div className="sm:col-span-2 lg:col-span-4">
@@ -195,7 +200,10 @@ export function Footer({ site }: { site: SiteConfig }) {
 
         <div className="mt-10 flex flex-col gap-3 border-t border-brand-700/80 pt-6 text-xs leading-relaxed text-brand-300 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {year} {site.companyName}. Bảo lưu mọi quyền.
+            © {year} {site.companyName}.{" "}
+            <Link href="/chinh-sach-bao-mat" className="hover:text-white transition-colors">
+              Chính sách bảo mật
+            </Link>
           </p>
           {site.parentCompany && (
             <p className="sm:text-right">

@@ -1,34 +1,31 @@
 import { Button } from "@/components/ui/Button";
-import { Container } from "@/components/ui/Container";
+import { Section } from "@/components/ui/Section";
 
 export function CTABanner() {
   return (
-    <section className="py-16 lg:py-20 overflow-x-hidden">
-      <Container>
-        <div className="relative overflow-hidden rounded-2xl bg-brand-800 px-5 py-10 sm:px-8 sm:py-12 lg:px-16 lg:py-14 text-center grain-overlay">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-accent/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-          <h2 className="font-display text-2xl sm:text-3xl text-white relative">
-            Cần tư vấn sản phẩm hoặc báo giá?
-          </h2>
-          <p className="mt-3 text-brand-100 max-w-xl mx-auto relative">
-            Liên hệ bộ phận kinh doanh để được hỗ trợ kỹ thuật và báo giá nhanh
-            cho dự án của bạn.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4 relative">
-            <Button href="/lien-he" variant="secondary" size="lg">
-              Liên hệ ngay
-            </Button>
-            <Button
-              href="/san-pham"
-              variant="ghost"
-              size="lg"
-              className="text-white hover:bg-white/10 border border-white/20"
-            >
-              Xem sản phẩm
-            </Button>
-          </div>
+    <Section size="sm" className="blueprint-bg">
+      <div className="relative overflow-hidden rounded-xl bg-brand-900 px-6 py-12 sm:px-10 sm:py-14 lg:px-16 text-center grain-overlay blueprint-bg-dark border border-brand-700/40 shadow-elevated">
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-600 via-accent to-brand-600" />
+        <div className="absolute bottom-0 right-0 w-72 h-72 bg-accent/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3" />
+        <p className="section-eyebrow section-eyebrow-light justify-center mb-4 relative">
+          Hỗ trợ dự án
+        </p>
+        <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl text-white relative max-w-2xl mx-auto leading-tight">
+          Cần tư vấn sản phẩm hoặc báo giá?
+        </h2>
+        <p className="mt-4 text-brand-100 max-w-xl mx-auto relative leading-relaxed">
+          Liên hệ bộ phận kinh doanh để được hỗ trợ kỹ thuật và báo giá nhanh
+          cho dự án của bạn.
+        </p>
+        <div className="mt-9 flex flex-wrap justify-center gap-3 sm:gap-4 relative">
+          <Button href="/bang-gia" variant="accent" size="lg">
+            Liên hệ ngay
+          </Button>
+          <Button href="/san-pham" variant="outline-light" size="lg">
+            Xem sản phẩm
+          </Button>
         </div>
-      </Container>
-    </section>
+      </div>
+    </Section>
   );
 }
