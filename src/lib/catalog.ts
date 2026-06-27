@@ -33,7 +33,7 @@ export const TCVN_STANDARDS = [
   },
   {
     code: "TCVN 7888:2014",
-    name: "Cọc bê tông ly tâm dự ứng lực",
+    name: "Cọc bê tông ly tâm",
     products: ["Cọc bê tông ly tâm", "Cọc ván bê tông dự ứng lực"],
   },
   {

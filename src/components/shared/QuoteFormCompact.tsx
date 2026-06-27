@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 
 const PRODUCT_OPTIONS = [
   "Cống bê tông ly tâm",
+  "Cọc ván dự ứng lực",
   "Cọc bê tông dự ứng lực",
   "Gạch bê tông / Gạch vỉa hè",
   "Bê tông nhựa nóng",
