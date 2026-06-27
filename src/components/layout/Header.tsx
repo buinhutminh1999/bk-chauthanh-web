@@ -70,14 +70,14 @@ export function Header({
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 w-full min-w-0 bg-brand-900 text-white overflow-x-hidden">
+    <header className="sticky top-0 z-50 w-full min-w-0 bg-brand-900 text-white">
       <div className="h-0.5 bg-gradient-to-r from-brand-700 via-accent to-brand-700" />
       <div className="border-b border-brand-700/60 shadow-lg shadow-brand-900/25">
-        <Container>
-          <div className="grid min-w-0 grid-cols-[minmax(0,auto)_1fr_auto] items-center gap-x-3 sm:gap-x-4 h-16 lg:h-[4.75rem]">
+        <Container className="overflow-visible">
+          <div className="grid min-w-0 grid-cols-[minmax(0,auto)_1fr_auto] items-center gap-x-3 sm:gap-x-4 h-16 lg:h-[4.75rem] overflow-visible">
             <BrandMark brand={brand} companyName={companyName} showTextFrom="lg" context="header" />
 
-            <nav className="hidden lg:flex items-center justify-center gap-0.5 min-w-0" aria-label="Chính">
+            <nav className="hidden lg:flex items-center justify-center gap-0.5 min-w-0 overflow-visible" aria-label="Chính">
               {NAV_BEFORE_PRODUCTS.map((item) => (
                 <Link key={item.href} href={item.href} className={navLinkClass}>
                   {item.label}
