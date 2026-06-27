@@ -10,7 +10,7 @@ import { PRODUCT_LINE_FILTERS, sortProductsByPriority } from "@/lib/site-constan
 const LINE_DESC: Record<string, string> = {
   "coc-van-be-tong-du-ung-luc": "Cọc ván tiết diện hình chữ I dự ứng lực",
   "coc-be-tong-ly-tam-du-ung-luc": "Cọc tròn ly tâm theo TCVN 7888:2014",
-  "ong-cong-be-tong-ly-tam": "Ống cống ly tâm đường kính 300–3600mm",
+  "ong-cong-be-tong-ly-tam": "Ống cống ly tâm đường kính 300–1500mm",
   "coc-vuong-be-tong-du-ung-luc": "Cọc vuông BTCT theo yêu cầu dự án",
   "gach-via-he": "Gạch vỉa hè terrazzo đa màu",
   "gach-be-tong": "Gạch block bê tông không nung",
