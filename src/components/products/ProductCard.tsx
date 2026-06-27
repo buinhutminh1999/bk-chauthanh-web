@@ -1,32 +1,36 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
+import { ProductThumbnail, hasProcessVisual } from "@/components/products/ProductThumbnail";
 import type { Product } from "@/types/content";
+import { cn } from "@/lib/utils";
 
 export function ProductCard({ product }: { product: Product }) {
   const image = product.images[0];
   const specEntries = product.specs ? Object.entries(product.specs).slice(0, 2) : [];
+  const usesProcess = hasProcessVisual(product.slug);
 
   return (
     <article className="group relative flex flex-col overflow-hidden card-base card-interactive">
       <Link href={`/san-pham/${product.slug}`} className="block">
-        <div className="relative aspect-[5/4] overflow-hidden bg-brand-100">
-          {image ? (
-            <Image
-              src={image}
-              alt={product.name}
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-              sizes="(max-width: 768px) 100vw, 33vw"
-            />
-          ) : (
-            <div className="flex h-full items-center justify-center text-steel text-sm">
-              Không có ảnh
-            </div>
+        <div
+          className={cn(
+            "relative overflow-hidden bg-brand-50",
+            usesProcess ? "min-h-[22rem] sm:min-h-[24rem]" : "aspect-[5/4]",
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-brand-900/55 via-brand-900/10 to-transparent" />
-          <Badge className="absolute top-3 left-3 shadow-sm">{product.category}</Badge>
+        >
+          <div className={cn("absolute inset-0", usesProcess ? "p-2 sm:p-3 overflow-y-auto" : "p-2 sm:p-3")}>
+            <ProductThumbnail
+              slug={product.slug}
+              image={image}
+              alt={product.name}
+              size={usesProcess ? "compact" : undefined}
+            />
+          </div>
+          {!usesProcess && (
+            <div className="absolute inset-0 bg-gradient-to-t from-brand-900/55 via-brand-900/10 to-transparent pointer-events-none" />
+          )}
+          <Badge className="absolute top-3 left-3 z-10 shadow-sm">{product.category}</Badge>
         </div>
         <div className="p-5 sm:p-6">
           <h3 className="font-display text-lg text-brand-900 group-hover:text-brand-700 transition-colors line-clamp-2">

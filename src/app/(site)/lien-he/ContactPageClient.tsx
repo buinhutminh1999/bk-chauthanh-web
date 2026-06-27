@@ -157,7 +157,7 @@ export function ContactPageClient({ site }: { site: SiteInfo }) {
 
               <div className="p-6 rounded-xl bg-brand-50 border border-brand-100 text-sm text-ink-muted">
                 <p>
-                  Giờ làm việc: Thứ 2 — Thứ 6, 7:30 — 17:00. Liên hệ qua điện thoại hoặc email
+                  Giờ làm việc: Thứ 2 — Thứ 6, 7:00 — 17:00. Liên hệ qua điện thoại hoặc email
                   để được phản hồi nhanh nhất.
                 </p>
               </div>

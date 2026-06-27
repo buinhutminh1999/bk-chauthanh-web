@@ -74,14 +74,14 @@ export const TRUST_ITEMS = [
   {
     id: "giao-hang",
     title: "Giao hàng tận nơi",
-    desc: "Giao hàng đến công trình, phối hợp tiến độ thi công và bố trí vận chuyển phù hợp từng loại sản phẩm.",
+    desc: "Phục vụ giao hàng trong tỉnh và ngoài tỉnh",
     details: {
       summary:
         "Giao hàng đến công trình, phối hợp tiến độ thi công và bố trí vận chuyển phù hợp từng loại sản phẩm.",
       points: [
-        "Giao cống, cọc, gạch và bê tông nhựa theo lịch công trình",
-        "Phục vụ An Giang và các tỉnh khu vực Miền Tây",
-        "Tư vấn phương án bốc xếp, chất hàng an toàn cho cọc và cống",
+        "Giao hàng trong tỉnh và ngoài tỉnh",
+        "Giao hàng theo tiến độ công trình",
+        "Tư vấn phương án bốc xếp, chất hàng an toàn",
         "Hỗ trợ báo giá vận chuyển khi khách hàng yêu cầu",
         "Liên hệ kinh doanh để lên kế hoạch giao theo khối lượng đơn hàng",
       ],
@@ -94,13 +94,7 @@ export const TRUST_ITEMS = [
     details: {
       summary:
         "Đội ngũ kỹ thuật tư vấn lựa chọn chủng loại, quy cách sản phẩm phù hợp hồ sơ thiết kế và điều kiện thi công tại công trường.",
-      points: [
-        "Tư vấn chọn cọc ván, cọc ly tâm, cọc vuông và cống theo tải trọng, địa chất",
-        "Cung cấp bảng thông số, bản vẽ điển hình và hồ sơ nghiệm thu theo yêu cầu",
-        "Giải đáp kỹ thuật về gạch terrazzo, gạch bê tông, bê tông nhựa và sản phẩm đặc biệt",
-        "Báo giá và phản hồi nhanh qua điện thoại, Zalo hoặc email trong giờ làm việc",
-        "Hỗ trợ sản xuất theo hồ sơ thiết kế trong phạm vi dây chuyền nhà máy",
-      ],
+      points: [],
       contacts: [
         { role: "Tư vấn", name: "Anh Tài", phone: "0913.877.184" },
         { role: "Tư vấn", name: "Anh Sang", phone: "0913.877.408" },

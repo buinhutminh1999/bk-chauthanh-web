@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, CheckCircle } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { ImageGallery } from "@/components/ui/ImageGallery";
+import { ProductMedia } from "@/components/products/ProductMedia";
 import { ProductContentTabs } from "@/components/products/ProductContentTabs";
 import { MarkdownContent } from "@/components/blog/MarkdownContent";
 import { RelatedProducts } from "@/components/products/RelatedProducts";
@@ -84,7 +84,7 @@ export default async function ProductDetailPage({
           </Link>
 
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-start min-w-0">
-            <ImageGallery images={product.images} alt={product.name} className="min-w-0" />
+            <ProductMedia slug={product.slug} images={product.images} alt={product.name} className="min-w-0" />
 
             <div className="min-w-0 space-y-6">
               <div>

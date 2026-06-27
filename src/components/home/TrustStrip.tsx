@@ -93,14 +93,15 @@ export function TrustStrip() {
             </div>
             <div className="px-6 py-5">
               <p className="text-sm text-ink-muted leading-relaxed">{active.details.summary}</p>
-              <ul className="mt-5 space-y-2.5">
-                {active.details.points.map((point) => (
-                  <li key={point} className="flex gap-3 text-sm text-ink leading-relaxed">
-                    <span className="mt-2 h-1 w-4 shrink-0 bg-accent rounded-sm" />
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
+              {active.details.points.length > 0 && (
+                <div className="mt-5 space-y-2.5">
+                  {active.details.points.map((point) => (
+                    <p key={point} className="text-sm text-ink leading-relaxed">
+                      {point}
+                    </p>
+                  ))}
+                </div>
+              )}
               {"contacts" in active.details && active.details.contacts && (
                 <SalesContactsList
                   contacts={[...active.details.contacts]}

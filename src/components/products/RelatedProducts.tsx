@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { ProductThumbnail } from "@/components/products/ProductThumbnail";
 import type { Product } from "@/types/content";
 
 export function RelatedProducts({
@@ -32,16 +32,15 @@ export function RelatedProducts({
             href={`/san-pham/${p.slug}`}
             className="group flex gap-4 p-4 rounded-xl border border-brand-100 bg-white hover:border-brand-200 hover:shadow-md transition-[border-color,box-shadow]"
           >
-            <div className="relative w-24 h-24 shrink-0 rounded-lg overflow-hidden bg-brand-50">
-              {p.images[0] && (
-                <Image
-                  src={p.images[0]}
+            <div className="relative w-24 h-24 shrink-0 rounded-lg overflow-hidden bg-brand-50 ring-1 ring-brand-100">
+              <div className="absolute inset-0 p-1">
+                <ProductThumbnail
+                  slug={p.slug}
+                  image={p.images[0]}
                   alt={p.name}
-                  fill
-                  className="object-cover"
-                  sizes="96px"
+                  size="card"
                 />
-              )}
+              </div>
             </div>
             <div className="min-w-0">
               <p className="text-xs text-brand-600 font-medium">{p.category}</p>
